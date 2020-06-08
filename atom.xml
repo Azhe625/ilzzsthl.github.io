@@ -44,11 +44,11 @@
   </entry>
   
   <entry>
-    <title>Vue单文件拆分之mixins</title>
-    <link href="http://yoursite.com/2020/05/26/vue-dan-wen-jian-chai-fen-zhi-mixins/"/>
-    <id>http://yoursite.com/2020/05/26/vue-dan-wen-jian-chai-fen-zhi-mixins/</id>
-    <published>2020-05-26T05:59:28.801Z</published>
-    <updated>2020-05-26T06:03:14.335Z</updated>
+    <title>vue单文件拆分之mixins</title>
+    <link href="http://yoursite.com/2020/01/16/vue-dan-wen-jian-chai-fen-zhi-mixins/"/>
+    <id>http://yoursite.com/2020/01/16/vue-dan-wen-jian-chai-fen-zhi-mixins/</id>
+    <published>2020-01-16T07:49:46.000Z</published>
+    <updated>2020-06-08T10:21:06.662Z</updated>
     
     <summary type="html">
     
@@ -63,6 +63,12 @@
     </summary>
     
     
+      <category term="vue" scheme="http://yoursite.com/categories/vue/"/>
+    
+    
+      <category term="vue" scheme="http://yoursite.com/tags/vue/"/>
+    
+      <category term="代码优化" scheme="http://yoursite.com/tags/%E4%BB%A3%E7%A0%81%E4%BC%98%E5%8C%96/"/>
     
   </entry>
   

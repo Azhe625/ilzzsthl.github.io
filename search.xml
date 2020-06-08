@@ -1,497 +1,175 @@
 <?xml version="1.0" encoding="utf-8"?>
-<search>
-  <entry>
-    <title>vue组件懒加载</title>
-    <url>/2020/05/28/vue-zu-jian-lan-jia-zai/</url>
-    <content><![CDATA[<p>Component</p>
-<script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
-  </entry>
-  <entry>
-    <title>Vue单文件拆分之mixins</title>
-    <url>/2020/05/26/vue-dan-wen-jian-chai-fen-zhi-mixins/</url>
-    <content><![CDATA[<p>今天get到一个解决方案，关于单vue组件过大拆分的问题。<br>举个例子，有个test的文件，里面的代码量很大，之前是这样解决的：拆分成多个.vue文件，通过组件引入的方式，每个.vue文件都要写template、script。调用子组件的方式需要通过ref。<br>存在的问题：只想引用js，却需要按照通用组件的方式引入，并且每个都需要写template和一个div，带来性能损耗。<br>解决方案：使用vue.js mixins，将不同的逻辑放到不同的js文件里，方法直接通过this调用。</p>
-<h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><p>mixins.js </p>
-<pre class=" language-javascript"><code class="language-javascript">    expord <span class="token keyword">default</span> <span class="token punctuation">{</span>
-        <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span></code></pre>
-<p>在test里混合</p>
-<pre class=" language-javascript"><code class="language-javascript"><span class="token operator">&lt;</span>script<span class="token operator">></span>
-    <span class="token keyword">import</span> mixins <span class="token keyword">from</span> <span class="token string">'../minxins.js'</span>
-    <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
-        mixins<span class="token punctuation">:</span> <span class="token punctuation">[</span>mixins<span class="token punctuation">]</span>
-    <span class="token punctuation">}</span>
-<span class="token operator">&lt;</span><span class="token operator">/</span>scrpit<span class="token operator">></span></code></pre>
-<script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
-  </entry>
-  <entry>
-    <title>markdown特殊技巧</title>
-    <url>/2020/01/16/markdown-te-shu-ji-qiao/</url>
-    <content><![CDATA[<h2 id="第一式-文字变色"><a href="#第一式-文字变色" class="headerlink" title="第一式 文字变色"></a>第一式 文字变色</h2><pre><code>&lt;font face="黑体"&gt;黑体&lt;/font&gt;
-&lt;font color="c7254e"&gt;文字变色！&lt;/font&gt;
-&lt;table&gt;&lt;tr&gt;&lt;td bgcolor="c7254e"&gt;背景变色！&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</code></pre><p>效果如下:  </p>
-<p><font face="黑体">黑体</font><br><font color="c7254e">文字变色！</font></p>
-<table><tbody><tr><td bgcolor="c7254e">背景变色！</td></tr></tbody></table><script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
+<search> 
+  
+  
+    
+    <entry>
+      <title>vue组件懒加载</title>
+      <link href="/2020/05/28/vue-zu-jian-lan-jia-zai/"/>
+      <url>/2020/05/28/vue-zu-jian-lan-jia-zai/</url>
+      
+        <content type="html"><![CDATA[<p>Component</p><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>vue单文件拆分之mixins</title>
+      <link href="/2020/01/16/vue-dan-wen-jian-chai-fen-zhi-mixins/"/>
+      <url>/2020/01/16/vue-dan-wen-jian-chai-fen-zhi-mixins/</url>
+      
+        <content type="html"><![CDATA[<p>今天get到一个解决方案，关于单vue组件过大拆分的问题。<br>举个例子，有个test的文件，里面的代码量很大，之前是这样解决的：拆分成多个.vue文件，通过组件引入的方式，每个.vue文件都要写template、script。调用子组件的方式需要通过ref。<br>存在的问题：只想引用js，却需要按照通用组件的方式引入，并且每个都需要写template和一个div，带来性能损耗。<br>解决方案：使用vue.js mixins，将不同的逻辑放到不同的js文件里，方法直接通过this调用。</p><h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><p>mixins.js </p><pre class=" language-javascript"><code class="language-javascript">    expord <span class="token keyword">default</span> <span class="token punctuation">{</span>        <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>        <span class="token punctuation">}</span>    <span class="token punctuation">}</span></code></pre><p>在test里混合</p><pre class=" language-javascript"><code class="language-javascript"><span class="token operator">&lt;</span>script<span class="token operator">></span>    <span class="token keyword">import</span> mixins <span class="token keyword">from</span> <span class="token string">'../minxins.js'</span>    <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>        mixins<span class="token punctuation">:</span> <span class="token punctuation">[</span>mixins<span class="token punctuation">]</span>    <span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>scrpit<span class="token operator">></span></code></pre><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
       <categories>
-        <category>Markdown</category>
+          
+          <category> vue </category>
+          
       </categories>
-      <tags>
-        <tag>Markdown</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>JavaScript模块化的理解</title>
-    <url>/2020/01/16/javascript-mo-kuai-hua-de-li-jie/</url>
-    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在开发时经常会听到模块化，比如说<font color="#c7254e">CommonJS、AMD、CMD、ES6</font>模块化，但一直没有去了解这些到底是个啥，有什么用。今天在分析源码时就遇到了这些模块化的语法，因此认为还是有必要去了解一番的，在此做个总结。</p>
-<p>疑问四部曲：什么是模块，什么时候使用模块化，模块化用在哪？解决了什么问题？<br>理解：模块就是将一个大文件拆分成多个独立且相互依赖的小模块，各个模块可以通过特定语法去引入其他模块，在代码量多、项目逐渐庞大时使用模块化，解决了以下问题：  </p>
-<ol>
-<li>利于维护，通过引入方式我们可以直观的了解依赖关系</li>
-<li>多人开发时只负责自己独立的一块模块，不需要关心别人写的代码</li>
-<li>不会造成命名冲突</li>
-<li>…  </li>
-</ol>
-<h2 id="CommonJS规范"><a href="#CommonJS规范" class="headerlink" title="CommonJS规范"></a>CommonJS规范</h2><blockquote>
-<p>CommonJS 是以在浏览器环境之外构建 JavaScript 生态系统为目标而产生的项目，比如在服务器和桌面环境中。<br>CommonJS 规范是为了解决 JavaScript 的作用域问题而定义的模块形式，可以使每个模块它自身的命名空间中执行。该规范的主要内容是，模块必须通过 module.exports 导出对外的变量或接口，通过 require() 来导入其他模块的输出到当前模块作用域中。  </p>
-</blockquote>
-<p>Node.js开发者一定会对CommonJS眼熟，因为Node开发就是采用的CommonJS规范，demo如下：</p>
-<pre class=" language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">// moduleA.js</span>
-module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span> value <span class="token punctuation">)</span><span class="token punctuation">{</span>
-    <span class="token keyword">return</span> value <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token comment" spellcheck="true">// moduleB.js</span>
-<span class="token keyword">var</span> multiplyBy2 <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'./moduleA'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">var</span> result <span class="token operator">=</span> <span class="token function">multiplyBy2</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<p>上图的moduleA.js通过<font color="#c7254e">module.exports</font>导出了一个函数，moduleB.js通过<font color="#c7254e">require()</font>去获取了moduleA这个模块，调用了此函数<br>CommonJS加载模块是同步的，虽然是为了服务器和桌面环境产生的规范，但是也有浏览器端的实现。</p>
-<h2 id="AMD规范"><a href="#AMD规范" class="headerlink" title="AMD规范"></a>AMD规范</h2><blockquote>
-<p>AMD（异步模块定义）是为浏览器环境设计的，定义了一套 JavaScript 模块依赖异步加载标准，因为 CommonJS 模块系统是同步加载的，当前浏览器环境还没有准备好同步加载模块的条件。</p>
-</blockquote>
-<p>由于CommonJS是为了服务器和桌面设计的规范，是同步的，那么AMD的不同处就是为了浏览器环境设计的，是异步的，requireJS是基于AMD规范的模块化库。<br>模块通过<font color="#c7254e">define</font>函数定义在闭包中</p>
-<pre class=" language-javascript"><code class="language-javascript">    <span class="token function">define</span><span class="token punctuation">(</span>id<span class="token operator">?</span><span class="token punctuation">:</span> String<span class="token punctuation">,</span> dependencies<span class="token operator">?</span><span class="token punctuation">:</span> String<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> factory<span class="token punctuation">:</span> Function<span class="token operator">|</span>Object<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<p><font color="#c7254e">id</font>是可选的，代表模块名。<br><font color="#c7254e">dependencies</font>也是可选的，代表指定所要依赖的模块列表，默认值是[“require”, “exports”, “module”]<br><font color="#c7254e">factory</font>是一个函数或对象，包裹的是模块的具体实现，如果是函数，那么它的返回值就是模块的输出接口或值。<br>光看文字理解起来比较复杂，我们来看看demo帮助理解:</p>
-<pre class=" language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">//定义一个名字为myModule的模块，依赖于jQuery模块</span>
-<span class="token function">define</span><span class="token punctuation">(</span><span class="token string">'myModule'</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">'jquery'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>$<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token comment" spellcheck="true">// $ 是 jquery 模块的输出</span>
-    <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'body'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">text</span><span class="token punctuation">(</span><span class="token string">'hello world'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment" spellcheck="true">//使用上面的模块</span>
-<span class="token function">require</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'myModule'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>myModule<span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<p>我们在使用myModule这个模块时，首先加载了jquery模块，并使用了jquery的语法在页面中输出了一句话，然后再触发回调function，去继续运行function内的代码，由此可见是一个异步的方式</p>
-<h2 id="CMD规范"><a href="#CMD规范" class="headerlink" title="CMD规范"></a>CMD规范</h2><p>CMD与AMD相近，都是异步加载，用于浏览器环境中，seaJS是基于CMD规范的模块化库。<br>不同之处是</p>
-<ol>
-<li>AMD的模块是提前执行的，CMD是延迟执行的。</li>
-<li>AMD推崇定义模块时就要声明依赖的模块(依赖前置)，CMD推崇只有用到某一个模块时再去加载模块(依赖就近)<br>demo如下:<pre class=" language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">//AMD</span>
-<span class="token function">define</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'./a'</span><span class="token punctuation">,</span><span class="token string">'./b'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span> <span class="token punctuation">{</span>
- <span class="token comment" spellcheck="true">//可以直接使用依赖方法</span>
- a<span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
- b<span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre>
-</li>
-</ol>
-<p>//CMD<br>define(function (requie, exports, module) {<br>    //需要使用的时候 在require<br>    var a = require(‘./a’);<br>    a.test();<br>});</p>
-<pre><code>
-## ES6模块化
-ES6已经自带了模块化，而且使用方法更为简单，主要使用的的语法是&lt;font color="#c7254e"&gt;export&lt;/font&gt;和&lt;font color="#c7254e"&gt;import&lt;/font&gt;。demo如下:
-### export/import 导入导出某变量/函数
-1. 对变量的导入导出
-```javascript
-    //第一种导出
-    export var name = 'lz'
-    //第二种导出
-    var name = 'lz'
-    export { name }
-    //导出的时候重命名
-    export {name as newName}
-
-    //导入
-    import { name } from './test.js'
-    //为变量重新定义名称导入
-    import { name as newName } from './test.js'</code></pre><ol start="2">
-<li><p>对函数的导出导入</p>
-<pre class=" language-javascript"><code class="language-javascript"> <span class="token comment" spellcheck="true">//第一种导出</span>
- <span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">sayHi</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
- <span class="token comment" spellcheck="true">//第二种导出</span>
- <span class="token keyword">function</span> <span class="token function">sayHi</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
- <span class="token keyword">export</span> <span class="token punctuation">{</span> sayHi <span class="token punctuation">}</span>
- <span class="token comment" spellcheck="true">//导出的时候重命名</span>
- <span class="token keyword">export</span> <span class="token punctuation">{</span> sayHi <span class="token keyword">as</span> newFunction <span class="token punctuation">}</span>
-
- <span class="token comment" spellcheck="true">//导入</span>
- <span class="token keyword">import</span> <span class="token punctuation">{</span> sayHi <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./test.js'</span>
- <span class="token comment" spellcheck="true">//为变量重新定义名称导入</span>
- <span class="token keyword">import</span> <span class="token punctuation">{</span> sayHi <span class="token keyword">as</span> newFunction <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./test.js'</span></code></pre>
-</li>
-<li><p>对变量函数的整体导入<br>之前的例子是针对某一个名称去导入，也可以整体导入</p>
-<pre class=" language-javascript"><code class="language-javascript"> <span class="token keyword">import</span> <span class="token operator">*</span> <span class="token keyword">as</span> test <span class="token keyword">from</span> '<span class="token punctuation">.</span><span class="token operator">/</span>test<span class="token punctuation">.</span>js</code></pre>
-<p>所有的输出值都加载到test这个对象上面，使用时就直接test.××。<br>注意一点，模块整体导入的对象是不允许运行时改变的</p>
-<pre class=" language-javascript"><code class="language-javascript"> <span class="token comment" spellcheck="true">//两者都是不允许的</span>
- test<span class="token punctuation">.</span>name <span class="token operator">=</span> <span class="token string">'lz'</span>
- test<span class="token punctuation">.</span>sayHi <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span></code></pre>
-</li>
-</ol>
-<h3 id="export-defaut的使用"><a href="#export-defaut的使用" class="headerlink" title="export defaut的使用"></a>export defaut的使用</h3><p>之前都是已知函数名、变量名时进行的导入，当然，不需要知道变量/函数名也是可以导入导出。此处用到了<font color="#c7254e">export defaut</font>方法，为模块指定默认的输出。  </p>
-<ol>
-<li><p>匿名函数的导出导入</p>
-<pre class=" language-javascript"><code class="language-javascript"> <span class="token comment" spellcheck="true">//第一种导出</span>
- <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
- <span class="token comment" spellcheck="true">//导入</span>
- <span class="token keyword">import</span> sayHi <span class="token keyword">from</span> <span class="token string">'./test.js'</span>
- <span class="token function">sayHi</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
-</li>
-<li><p>非匿名函数的导出导出</p>
-<pre class=" language-javascript"><code class="language-javascript"> <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">function</span> <span class="token function">sayHi</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
- <span class="token comment" spellcheck="true">//或者</span>
- <span class="token keyword">function</span> <span class="token function">sayHi</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
- <span class="token keyword">export</span> <span class="token keyword">default</span> sayHi
-
- <span class="token comment" spellcheck="true">//上面代码定义的函数名，在模块外部加载是无效的，视为匿名函数</span>
- <span class="token keyword">import</span> sayHi <span class="token keyword">from</span> <span class="token string">'./test.js'</span>
- <span class="token comment" spellcheck="true">//或</span>
- <span class="token keyword">import</span> hello <span class="token keyword">from</span> <span class="token string">'./test'</span></code></pre>
-</li>
-<li><p>default的本质<br>default的本质其实就是输出一个叫做default的变量或方法，然后允许为它取任何名字。</p>
-<pre class=" language-javascript"><code class="language-javascript"> <span class="token keyword">function</span> <span class="token function">sayHi</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span>
- <span class="token keyword">export</span> <span class="token punctuation">{</span> sayHi <span class="token keyword">as</span> <span class="token keyword">default</span><span class="token punctuation">}</span>
- <span class="token comment" spellcheck="true">//等价于</span>
- <span class="token keyword">export</span> <span class="token keyword">default</span> sayHi
-
- <span class="token keyword">import</span> <span class="token punctuation">{</span> <span class="token keyword">default</span> <span class="token keyword">as</span> sayHi <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./test.js'</span>
- <span class="token comment" spellcheck="true">//等价于</span>
- <span class="token keyword">import</span> sayHi <span class="token keyword">from</span> <span class="token string">'./test.js'</span></code></pre>
-<p>所以看出default相当于输出了一个叫default的变量，以下是错误的声明</p>
-<pre class=" language-javascript"><code class="language-javascript"> <span class="token comment" spellcheck="true">//已经声明了一次 </span>
- <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token number">1</span>
- <span class="token comment" spellcheck="true">//未声明，没有指定对外的接口</span>
- <span class="token keyword">export</span> <span class="token number">250</span></code></pre>
-</li>
-<li><p>export default和export同时使用</p>
-<pre class=" language-javascript"><code class="language-javascript"> <span class="token comment" spellcheck="true">//导出</span>
- <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">sayHi</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
- <span class="token keyword">function</span> <span class="token function">hello</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-
- <span class="token punctuation">}</span>
- <span class="token keyword">export</span> <span class="token punctuation">{</span> hello <span class="token keyword">as</span> helloWorld <span class="token punctuation">}</span>
- <span class="token comment" spellcheck="true">//导入</span>
- <span class="token keyword">import</span> sayHi<span class="token punctuation">,</span><span class="token punctuation">{</span> hello<span class="token punctuation">,</span> helloWorld <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./test.js'</span></code></pre>
-<p>上面的hello和helloWorld都指向同一个方法，暴露出helloWorld，默认指向hello接口</p>
-</li>
-<li><p>export 也可以输出类</p>
-<pre class=" language-javascript"><code class="language-javascript"> <span class="token keyword">export</span> defalut <span class="token keyword">class</span><span class="token punctuation">{</span> <span class="token operator">...</span> <span class="token punctuation">}</span></code></pre>
-<p>以上就是ES6模块化的基本使用方法。当然ES6的模块化不止这些，比如export和import复合写法、模块继承、跨模块常量等等，这些内容需要深入的学习ES6知识。</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>前端模块化的内容暂时整理了这么多，后续学到会继续更新。从只听说过模块化，到现在能区分出各个模块的规范及使用方法，这次总结对我来言确实学习到了模块化方面的知识，希望对大家也能有所帮助。</p>
-</li>
-</ol>
-<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="http://es6.ruanyifeng.com/#docs/module#export-default-%E5%91%BD%E4%BB%A4" target="_blank" rel="noopener">阮一峰-ES6入门</a><br><a href="https://zhaoda.net/webpack-handbook/commonjs.html" target="_blank" rel="noopener">CommonJS规范和AMD规范</a></p>
-<script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
+      
+      
+        <tags>
+            
+            <tag> vue </tag>
+            
+            <tag> 代码优化 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>markdown特殊技巧</title>
+      <link href="/2020/01/16/markdown-te-shu-ji-qiao/"/>
+      <url>/2020/01/16/markdown-te-shu-ji-qiao/</url>
+      
+        <content type="html"><![CDATA[<h2 id="第一式-文字变色"><a href="#第一式-文字变色" class="headerlink" title="第一式 文字变色"></a>第一式 文字变色</h2><pre><code>&lt;font face="黑体"&gt;黑体&lt;/font&gt;&lt;font color="c7254e"&gt;文字变色！&lt;/font&gt;&lt;table&gt;&lt;tr&gt;&lt;td bgcolor="c7254e"&gt;背景变色！&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</code></pre><p>效果如下:  </p><p><font face="黑体">黑体</font><br><font color="c7254e">文字变色！</font></p><table><tbody><tr><td bgcolor="c7254e">背景变色！</td></tr></tbody></table><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
       <categories>
-        <category>前端</category>
+          
+          <category> Markdown </category>
+          
       </categories>
-      <tags>
-        <tag>前端</tag>
-        <tag>JavaScript</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>快速上手Markdown</title>
-    <url>/2020/01/09/kuai-su-shang-shou-markdown/</url>
-    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>为什么选用Markdown?<br>Markdown是一种可以使用普通文本编辑器编写的标记语言，通过简单的标记语法，它可以使普通文本内容具有一定的格式。</p>
-<ol>
-<li>易于阅读、具有良好的写作体验</li>
-<li>大多数平台的支持，无缝接入</li>
-<li>上手快，基本上看完这篇文章就能快速入门</li>
-</ol>
-<h2 id="第一式-标题的用法"><a href="#第一式-标题的用法" class="headerlink" title="第一式 标题的用法"></a>第一式 标题的用法</h2><ol>
-<li>使用#号标记 代表一级标题到六级标题<pre><code># 一级
-## 二级
-### 三级
-...</code></pre></li>
-<li>使用=号和-标记 一级标题和二级标题<pre><code>一级标题
-====
-</code></pre></li>
-</ol>
-<h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><pre><code>
-## 第二式 段落格式
-### 换行
-Markdown的换行和一般的文字换行不同，需要两个空格+回车  
-### 字体
-Markdown可以使用斜体、粗体、粗斜体。  </code></pre><pre><code>*斜体文本*
-_斜体文本_
-**粗体文本**
-__粗体文本__
-***粗斜体文本***
-___粗斜体文本___</code></pre><pre><code>### 分割线
-分割线的写法有三种 连续的三个以上的星号、减号、底线，中间不能有除空格外的其他符号</code></pre><hr>
-<hr>
-<hr>
-<hr>
-<hr>
-<pre><code>### 删除线
-在文字中间添加两个波浪线~即可</code></pre><pre><code>~~hello~~</code></pre><pre><code>
-### 带下划线文本
-通过HTML的u标签实现</code></pre><p><u>带下划线的文本</u></p>
-<pre><code>
-### 脚注
-脚注就是对文本的补充说明，Markdown脚注格式如下</code></pre><p>[^要注明的文本]</p>
-<pre><code>
-## 第三式 Markdown列表
-Markdown支持有序列表和无序列表，可以使用*、+、-三种作为标记
-### 有序列表和无序列表</code></pre><p>//有序列表</p>
-<ul>
-<li>第一项</li>
-<li>第二项</li>
-<li>第三项</li>
-</ul>
-<ul>
-<li>第一项</li>
-<li>第二项</li>
-<li>第三项</li>
-</ul>
-<ul>
-<li>第一项</li>
-<li>第二项</li>
-<li>第三项</li>
-</ul>
-<p>//无序列表</p>
-<ol>
-<li>第一项</li>
-<li>第二项</li>
-<li>第三项<pre><code>### 列表嵌套</code></pre><ol>
-<li>第一项：<ul>
-<li>第一项嵌套的第一个元素</li>
-<li>第一项嵌套的第二个元素</li>
-</ul>
-</li>
-<li>第二项：<ul>
-<li>第二项嵌套的第一个元素</li>
-<li>第二项嵌套的第二个元素<pre><code></code></pre></li>
-</ul>
-</li>
-</ol>
-</li>
-</ol>
-<h2 id="第四式-区块"><a href="#第四式-区块" class="headerlink" title="第四式 区块"></a>第四式 区块</h2><h3 id="区块基本用法"><a href="#区块基本用法" class="headerlink" title="区块基本用法"></a>区块基本用法</h3><p>Markdown区块是在段落开头使用&gt;符号，后面紧跟一个空格</p>
-<pre><code>   &gt; 区块引用</code></pre><h3 id="嵌套区块"><a href="#嵌套区块" class="headerlink" title="嵌套区块"></a>嵌套区块</h3><pre><code>    &gt; 最外层
-    &gt; &gt; 第一层
-    &gt; &gt; &gt; 第二层
-    ...以此类推</code></pre><h2 id="第五式-代码块"><a href="#第五式-代码块" class="headerlink" title="第五式 代码块"></a>第五式 代码块</h2><p>一行段落中有一句代码片段，可以使用`包起来</p>
-<pre><code>    `console.log()`</code></pre><h3 id="代码区块"><a href="#代码区块" class="headerlink" title="代码区块"></a>代码区块</h3><p>代码区块一般有两种方式<br>第一种是使用4个空格的方式，第二种是```包裹，并指定一种语言，当然也可以不指定</p>
-<pre><code>    （```javascript
-        console.log("test")
-      ```）</code></pre><h2 id="第六式-链接"><a href="#第六式-链接" class="headerlink" title="第六式 链接"></a>第六式 链接</h2><p>链接使用方法如下</p>
-<pre><code>    [链接名称](链接地址)
-    或
-    &lt;链接地址&gt;
-    //demo
-    这是一个链接 [百度搜索](https://www.baidu.com)
-    &lt;https://www.baidu.com&gt;</code></pre><h3 id="变量链接"><a href="#变量链接" class="headerlink" title="变量链接"></a>变量链接</h3><pre><code>    这个链接用 1 作为网址变量 [百度搜索][1]
-    这个链接用 runoob 作为网址变量 [百度搜索][test]
-    一般在文档结尾为变量赋值（网址）
-
-    [1]: http://www.google.com/
-    [test]: http://www.runoob.com/</code></pre><h2 id="第七式-图片"><a href="#第七式-图片" class="headerlink" title="第七式 图片"></a>第七式 图片</h2><p>Markdown图片语法格式如下</p>
-<pre><code>    ![alt 替代文字](图片地址)
-    ![alt 替代文字](图片地址 "可选的标题")
-
-    //demo
-    ![百度网页](https://www.baidu.com)</code></pre><h3 id="变量图片"><a href="#变量图片" class="headerlink" title="变量图片"></a>变量图片</h3><p>也可以像链接那样，地址放在结尾</p>
-<pre><code>这个链接用 1 作为网址变量 ![RUNOOB][1].
-然后在文档的结尾位变量赋值（网址）
-
-[1]: http://static.runoob.com/images/runoob-logo.png</code></pre><h3 id="控制图片大小"><a href="#控制图片大小" class="headerlink" title="控制图片大小"></a>控制图片大小</h3><p>Markdown的语法无法控制图片大小,但是可以使用img标签控制</p>
-<pre><code>    &lt;img src="http://***.png" width="50%" /&gt;</code></pre><h2 id="第九式-表格"><a href="#第九式-表格" class="headerlink" title="第九式 表格"></a>第九式 表格</h2><p>Markdown是使用|来分割不同单元格的，语法如下</p>
-<pre><code>    |  表头   | 表头  |
-    |  ----  | ----  |
-    | 单元格  | 单元格 |
-    | 单元格  | 单元格 |</code></pre><p>可以设置对其方式:</p>
-<ul>
-<li>-: 设置内容和标题栏居右对齐。</li>
-<li>:- 设置内容和标题栏居左对齐。</li>
-<li>:-: 设置内容和标题栏居中对齐。<pre><code>  | 左对齐 | 右对齐 | 居中对齐 |
-  | :-----| ----: | :----: |
-  | 单元格 | 单元格 | 单元格 |
-  | 单元格 | 单元格 | 单元格 |</code></pre></li>
-</ul>
-<h2 id="第十式-高级操作"><a href="#第十式-高级操作" class="headerlink" title="第十式 高级操作"></a>第十式 高级操作</h2><p>Markdown还可以做流程图、时序图等高级技巧<br>但我认为这些功能<strong>可以，但没必要用</strong> ，不如直接搞一手visio转图片，多香<br>在此推荐一个编写Markdown的免费编辑器，功能强大<br><a href="https://typora.io/" target="_blank" rel="noopener">typora</a><br>以上就是快速入门Markdown的全部内容啦，看完包会</p>
-<script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
+      
+      
+        <tags>
+            
+            <tag> Markdown </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>JavaScript模块化的理解</title>
+      <link href="/2020/01/16/javascript-mo-kuai-hua-de-li-jie/"/>
+      <url>/2020/01/16/javascript-mo-kuai-hua-de-li-jie/</url>
+      
+        <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在开发时经常会听到模块化，比如说<font color="#c7254e">CommonJS、AMD、CMD、ES6</font>模块化，但一直没有去了解这些到底是个啥，有什么用。今天在分析源码时就遇到了这些模块化的语法，因此认为还是有必要去了解一番的，在此做个总结。</p><p>疑问四部曲：什么是模块，什么时候使用模块化，模块化用在哪？解决了什么问题？<br>理解：模块就是将一个大文件拆分成多个独立且相互依赖的小模块，各个模块可以通过特定语法去引入其他模块，在代码量多、项目逐渐庞大时使用模块化，解决了以下问题：  </p><ol><li>利于维护，通过引入方式我们可以直观的了解依赖关系</li><li>多人开发时只负责自己独立的一块模块，不需要关心别人写的代码</li><li>不会造成命名冲突</li><li>…  </li></ol><h2 id="CommonJS规范"><a href="#CommonJS规范" class="headerlink" title="CommonJS规范"></a>CommonJS规范</h2><blockquote><p>CommonJS 是以在浏览器环境之外构建 JavaScript 生态系统为目标而产生的项目，比如在服务器和桌面环境中。<br>CommonJS 规范是为了解决 JavaScript 的作用域问题而定义的模块形式，可以使每个模块它自身的命名空间中执行。该规范的主要内容是，模块必须通过 module.exports 导出对外的变量或接口，通过 require() 来导入其他模块的输出到当前模块作用域中。  </p></blockquote><p>Node.js开发者一定会对CommonJS眼熟，因为Node开发就是采用的CommonJS规范，demo如下：</p><pre class=" language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">// moduleA.js</span>module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span> value <span class="token punctuation">)</span><span class="token punctuation">{</span>    <span class="token keyword">return</span> value <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token comment" spellcheck="true">// moduleB.js</span><span class="token keyword">var</span> multiplyBy2 <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'./moduleA'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">var</span> result <span class="token operator">=</span> <span class="token function">multiplyBy2</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre><p>上图的moduleA.js通过<font color="#c7254e">module.exports</font>导出了一个函数，moduleB.js通过<font color="#c7254e">require()</font>去获取了moduleA这个模块，调用了此函数<br>CommonJS加载模块是同步的，虽然是为了服务器和桌面环境产生的规范，但是也有浏览器端的实现。</p><h2 id="AMD规范"><a href="#AMD规范" class="headerlink" title="AMD规范"></a>AMD规范</h2><blockquote><p>AMD（异步模块定义）是为浏览器环境设计的，定义了一套 JavaScript 模块依赖异步加载标准，因为 CommonJS 模块系统是同步加载的，当前浏览器环境还没有准备好同步加载模块的条件。</p></blockquote><p>由于CommonJS是为了服务器和桌面设计的规范，是同步的，那么AMD的不同处就是为了浏览器环境设计的，是异步的，requireJS是基于AMD规范的模块化库。<br>模块通过<font color="#c7254e">define</font>函数定义在闭包中</p><pre class=" language-javascript"><code class="language-javascript">    <span class="token function">define</span><span class="token punctuation">(</span>id<span class="token operator">?</span><span class="token punctuation">:</span> String<span class="token punctuation">,</span> dependencies<span class="token operator">?</span><span class="token punctuation">:</span> String<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> factory<span class="token punctuation">:</span> Function<span class="token operator">|</span>Object<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre><p><font color="#c7254e">id</font>是可选的，代表模块名。<br><font color="#c7254e">dependencies</font>也是可选的，代表指定所要依赖的模块列表，默认值是[“require”, “exports”, “module”]<br><font color="#c7254e">factory</font>是一个函数或对象，包裹的是模块的具体实现，如果是函数，那么它的返回值就是模块的输出接口或值。<br>光看文字理解起来比较复杂，我们来看看demo帮助理解:</p><pre class=" language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">//定义一个名字为myModule的模块，依赖于jQuery模块</span><span class="token function">define</span><span class="token punctuation">(</span><span class="token string">'myModule'</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">'jquery'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>$<span class="token punctuation">)</span> <span class="token punctuation">{</span>    <span class="token comment" spellcheck="true">// $ 是 jquery 模块的输出</span>    <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'body'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">text</span><span class="token punctuation">(</span><span class="token string">'hello world'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//使用上面的模块</span><span class="token function">require</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'myModule'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>myModule<span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre><p>我们在使用myModule这个模块时，首先加载了jquery模块，并使用了jquery的语法在页面中输出了一句话，然后再触发回调function，去继续运行function内的代码，由此可见是一个异步的方式</p><h2 id="CMD规范"><a href="#CMD规范" class="headerlink" title="CMD规范"></a>CMD规范</h2><p>CMD与AMD相近，都是异步加载，用于浏览器环境中，seaJS是基于CMD规范的模块化库。<br>不同之处是</p><ol><li>AMD的模块是提前执行的，CMD是延迟执行的。</li><li>AMD推崇定义模块时就要声明依赖的模块(依赖前置)，CMD推崇只有用到某一个模块时再去加载模块(依赖就近)<br>demo如下:<pre class=" language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">//AMD</span><span class="token function">define</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'./a'</span><span class="token punctuation">,</span><span class="token string">'./b'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment" spellcheck="true">//可以直接使用依赖方法</span> a<span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> b<span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></li></ol><p>//CMD<br>define(function (requie, exports, module) {<br>    //需要使用的时候 在require<br>    var a = require(‘./a’);<br>    a.test();<br>});</p><pre><code>## ES6模块化ES6已经自带了模块化，而且使用方法更为简单，主要使用的的语法是&lt;font color="#c7254e"&gt;export&lt;/font&gt;和&lt;font color="#c7254e"&gt;import&lt;/font&gt;。demo如下:### export/import 导入导出某变量/函数1. 对变量的导入导出```javascript    //第一种导出    export var name = 'lz'    //第二种导出    var name = 'lz'    export { name }    //导出的时候重命名    export {name as newName}    //导入    import { name } from './test.js'    //为变量重新定义名称导入    import { name as newName } from './test.js'</code></pre><ol start="2"><li><p>对函数的导出导入</p><pre class=" language-javascript"><code class="language-javascript"> <span class="token comment" spellcheck="true">//第一种导出</span> <span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">sayHi</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span> <span class="token comment" spellcheck="true">//第二种导出</span> <span class="token keyword">function</span> <span class="token function">sayHi</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span> <span class="token keyword">export</span> <span class="token punctuation">{</span> sayHi <span class="token punctuation">}</span> <span class="token comment" spellcheck="true">//导出的时候重命名</span> <span class="token keyword">export</span> <span class="token punctuation">{</span> sayHi <span class="token keyword">as</span> newFunction <span class="token punctuation">}</span> <span class="token comment" spellcheck="true">//导入</span> <span class="token keyword">import</span> <span class="token punctuation">{</span> sayHi <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./test.js'</span> <span class="token comment" spellcheck="true">//为变量重新定义名称导入</span> <span class="token keyword">import</span> <span class="token punctuation">{</span> sayHi <span class="token keyword">as</span> newFunction <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./test.js'</span></code></pre></li><li><p>对变量函数的整体导入<br>之前的例子是针对某一个名称去导入，也可以整体导入</p><pre class=" language-javascript"><code class="language-javascript"> <span class="token keyword">import</span> <span class="token operator">*</span> <span class="token keyword">as</span> test <span class="token keyword">from</span> '<span class="token punctuation">.</span><span class="token operator">/</span>test<span class="token punctuation">.</span>js</code></pre><p>所有的输出值都加载到test这个对象上面，使用时就直接test.××。<br>注意一点，模块整体导入的对象是不允许运行时改变的</p><pre class=" language-javascript"><code class="language-javascript"> <span class="token comment" spellcheck="true">//两者都是不允许的</span> test<span class="token punctuation">.</span>name <span class="token operator">=</span> <span class="token string">'lz'</span> test<span class="token punctuation">.</span>sayHi <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span></code></pre></li></ol><h3 id="export-defaut的使用"><a href="#export-defaut的使用" class="headerlink" title="export defaut的使用"></a>export defaut的使用</h3><p>之前都是已知函数名、变量名时进行的导入，当然，不需要知道变量/函数名也是可以导入导出。此处用到了<font color="#c7254e">export defaut</font>方法，为模块指定默认的输出。  </p><ol><li><p>匿名函数的导出导入</p><pre class=" language-javascript"><code class="language-javascript"> <span class="token comment" spellcheck="true">//第一种导出</span> <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span> <span class="token comment" spellcheck="true">//导入</span> <span class="token keyword">import</span> sayHi <span class="token keyword">from</span> <span class="token string">'./test.js'</span> <span class="token function">sayHi</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre></li><li><p>非匿名函数的导出导出</p><pre class=" language-javascript"><code class="language-javascript"> <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">function</span> <span class="token function">sayHi</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span> <span class="token comment" spellcheck="true">//或者</span> <span class="token keyword">function</span> <span class="token function">sayHi</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span> <span class="token keyword">export</span> <span class="token keyword">default</span> sayHi <span class="token comment" spellcheck="true">//上面代码定义的函数名，在模块外部加载是无效的，视为匿名函数</span> <span class="token keyword">import</span> sayHi <span class="token keyword">from</span> <span class="token string">'./test.js'</span> <span class="token comment" spellcheck="true">//或</span> <span class="token keyword">import</span> hello <span class="token keyword">from</span> <span class="token string">'./test'</span></code></pre></li><li><p>default的本质<br>default的本质其实就是输出一个叫做default的变量或方法，然后允许为它取任何名字。</p><pre class=" language-javascript"><code class="language-javascript"> <span class="token keyword">function</span> <span class="token function">sayHi</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span> <span class="token keyword">export</span> <span class="token punctuation">{</span> sayHi <span class="token keyword">as</span> <span class="token keyword">default</span><span class="token punctuation">}</span> <span class="token comment" spellcheck="true">//等价于</span> <span class="token keyword">export</span> <span class="token keyword">default</span> sayHi <span class="token keyword">import</span> <span class="token punctuation">{</span> <span class="token keyword">default</span> <span class="token keyword">as</span> sayHi <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./test.js'</span> <span class="token comment" spellcheck="true">//等价于</span> <span class="token keyword">import</span> sayHi <span class="token keyword">from</span> <span class="token string">'./test.js'</span></code></pre><p>所以看出default相当于输出了一个叫default的变量，以下是错误的声明</p><pre class=" language-javascript"><code class="language-javascript"> <span class="token comment" spellcheck="true">//已经声明了一次 </span> <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token number">1</span> <span class="token comment" spellcheck="true">//未声明，没有指定对外的接口</span> <span class="token keyword">export</span> <span class="token number">250</span></code></pre></li><li><p>export default和export同时使用</p><pre class=" language-javascript"><code class="language-javascript"> <span class="token comment" spellcheck="true">//导出</span> <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">sayHi</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span> <span class="token keyword">function</span> <span class="token function">hello</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span> <span class="token keyword">export</span> <span class="token punctuation">{</span> hello <span class="token keyword">as</span> helloWorld <span class="token punctuation">}</span> <span class="token comment" spellcheck="true">//导入</span> <span class="token keyword">import</span> sayHi<span class="token punctuation">,</span><span class="token punctuation">{</span> hello<span class="token punctuation">,</span> helloWorld <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./test.js'</span></code></pre><p>上面的hello和helloWorld都指向同一个方法，暴露出helloWorld，默认指向hello接口</p></li><li><p>export 也可以输出类</p><pre class=" language-javascript"><code class="language-javascript"> <span class="token keyword">export</span> defalut <span class="token keyword">class</span><span class="token punctuation">{</span> <span class="token operator">...</span> <span class="token punctuation">}</span></code></pre><p>以上就是ES6模块化的基本使用方法。当然ES6的模块化不止这些，比如export和import复合写法、模块继承、跨模块常量等等，这些内容需要深入的学习ES6知识。</p><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>前端模块化的内容暂时整理了这么多，后续学到会继续更新。从只听说过模块化，到现在能区分出各个模块的规范及使用方法，这次总结对我来言确实学习到了模块化方面的知识，希望对大家也能有所帮助。</p></li></ol><h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="http://es6.ruanyifeng.com/#docs/module#export-default-%E5%91%BD%E4%BB%A4" target="_blank" rel="noopener">阮一峰-ES6入门</a><br><a href="https://zhaoda.net/webpack-handbook/commonjs.html" target="_blank" rel="noopener">CommonJS规范和AMD规范</a></p><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
       <categories>
-        <category>Markdown</category>
+          
+          <category> 前端 </category>
+          
       </categories>
-      <tags>
-        <tag>Markdown</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>hexo更换主题</title>
-    <url>/2020/01/06/hexo-geng-huan-zhu-ti/</url>
-    <content><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>hexo可以自定义各种炫酷的主题，由于第一次使用，先去试用一下github比较热门的集中主题</p>
-<script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
-  </entry>
-  <entry>
-    <title>Hexo常用命令</title>
-    <url>/2020/01/06/hexo-chang-yong-ming-ling/</url>
-    <content><![CDATA[<h2 id="创建新文章"><a href="#创建新文章" class="headerlink" title="创建新文章"></a>创建新文章</h2><pre><code>    hexo new [layout] &lt;title&gt;</code></pre><h2 id="发布到github"><a href="#发布到github" class="headerlink" title="发布到github"></a>发布到github</h2><pre><code>    hexo clean //清除之前的东西
-    hexo generate //生成静态文章
-    hexo deploy // 部署文章</code></pre><h2 id="Hexo开启本地站点"><a href="#Hexo开启本地站点" class="headerlink" title="Hexo开启本地站点"></a>Hexo开启本地站点</h2><pre><code>    hexo s --debug</code></pre><h2 id="Hexo创建标签-分类-其他页面"><a href="#Hexo创建标签-分类-其他页面" class="headerlink" title="Hexo创建标签/分类/其他页面"></a>Hexo创建标签/分类/其他页面</h2><pre><code>    hexo new page tags //新建标签页面
-    hexo new page categories //新建分类页面</code></pre><script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
-  </entry>
-  <entry>
-    <title>初次部署hexo到githubpage</title>
-    <url>/2020/01/03/chu-ci-bu-shu-hexo-dao-githubpage/</url>
-    <content><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>很久之前就有每天坚持写个人博客的想法，一直没有实现，趁着2020年的到来，开始养成写博客的习惯，希望自己能够坚持。</p>
-<h2 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h2><p>…</p>
-<h2 id="上传源代码"><a href="#上传源代码" class="headerlink" title="上传源代码"></a>上传源代码</h2><p>由于Hexo部署在github的代码是打包之后的页面，而博客源代码则在本地。因此需要将源代码部署到github仓库中。由于安全问题，这里我们选择私有仓库。</p>
-<script>
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return; }
-            const img = document.createElement('img');
-            img.style = 'display:none !important;';
-            img.src = el.dataset.src;
-            img.addEventListener('error', () => {
-              img.remove();
-              el.style.color = 'inherit';
-              el.style.backgroundImage = 'none';
-              el.style.background = 'none';
-            });
-            img.addEventListener('load', () => {
-              img.remove();
-            });
-            document.body.appendChild(img);
-          });
-      </script>]]></content>
+      
+      
+        <tags>
+            
+            <tag> 前端 </tag>
+            
+            <tag> JavaScript </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>快速上手Markdown</title>
+      <link href="/2020/01/09/kuai-su-shang-shou-markdown/"/>
+      <url>/2020/01/09/kuai-su-shang-shou-markdown/</url>
+      
+        <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>为什么选用Markdown?<br>Markdown是一种可以使用普通文本编辑器编写的标记语言，通过简单的标记语法，它可以使普通文本内容具有一定的格式。</p><ol><li>易于阅读、具有良好的写作体验</li><li>大多数平台的支持，无缝接入</li><li>上手快，基本上看完这篇文章就能快速入门</li></ol><h2 id="第一式-标题的用法"><a href="#第一式-标题的用法" class="headerlink" title="第一式 标题的用法"></a>第一式 标题的用法</h2><ol><li>使用#号标记 代表一级标题到六级标题<pre><code># 一级## 二级### 三级...</code></pre></li><li>使用=号和-标记 一级标题和二级标题<pre><code>一级标题====</code></pre></li></ol><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><pre><code>## 第二式 段落格式### 换行Markdown的换行和一般的文字换行不同，需要两个空格+回车  ### 字体Markdown可以使用斜体、粗体、粗斜体。  </code></pre><pre><code>*斜体文本*_斜体文本_**粗体文本**__粗体文本__***粗斜体文本***___粗斜体文本___</code></pre><pre><code>### 分割线分割线的写法有三种 连续的三个以上的星号、减号、底线，中间不能有除空格外的其他符号</code></pre><hr><hr><hr><hr><hr><pre><code>### 删除线在文字中间添加两个波浪线~即可</code></pre><pre><code>~~hello~~</code></pre><pre><code>### 带下划线文本通过HTML的u标签实现</code></pre><p><u>带下划线的文本</u></p><pre><code>### 脚注脚注就是对文本的补充说明，Markdown脚注格式如下</code></pre><p>[^要注明的文本]</p><pre><code>## 第三式 Markdown列表Markdown支持有序列表和无序列表，可以使用*、+、-三种作为标记### 有序列表和无序列表</code></pre><p>//有序列表</p><ul><li>第一项</li><li>第二项</li><li>第三项</li></ul><ul><li>第一项</li><li>第二项</li><li>第三项</li></ul><ul><li>第一项</li><li>第二项</li><li>第三项</li></ul><p>//无序列表</p><ol><li>第一项</li><li>第二项</li><li>第三项<pre><code>### 列表嵌套</code></pre><ol><li>第一项：<ul><li>第一项嵌套的第一个元素</li><li>第一项嵌套的第二个元素</li></ul></li><li>第二项：<ul><li>第二项嵌套的第一个元素</li><li>第二项嵌套的第二个元素<pre><code></code></pre></li></ul></li></ol></li></ol><h2 id="第四式-区块"><a href="#第四式-区块" class="headerlink" title="第四式 区块"></a>第四式 区块</h2><h3 id="区块基本用法"><a href="#区块基本用法" class="headerlink" title="区块基本用法"></a>区块基本用法</h3><p>Markdown区块是在段落开头使用&gt;符号，后面紧跟一个空格</p><pre><code>   &gt; 区块引用</code></pre><h3 id="嵌套区块"><a href="#嵌套区块" class="headerlink" title="嵌套区块"></a>嵌套区块</h3><pre><code>    &gt; 最外层    &gt; &gt; 第一层    &gt; &gt; &gt; 第二层    ...以此类推</code></pre><h2 id="第五式-代码块"><a href="#第五式-代码块" class="headerlink" title="第五式 代码块"></a>第五式 代码块</h2><p>一行段落中有一句代码片段，可以使用`包起来</p><pre><code>    `console.log()`</code></pre><h3 id="代码区块"><a href="#代码区块" class="headerlink" title="代码区块"></a>代码区块</h3><p>代码区块一般有两种方式<br>第一种是使用4个空格的方式，第二种是```包裹，并指定一种语言，当然也可以不指定</p><pre><code>    （```javascript        console.log("test")      ```）</code></pre><h2 id="第六式-链接"><a href="#第六式-链接" class="headerlink" title="第六式 链接"></a>第六式 链接</h2><p>链接使用方法如下</p><pre><code>    [链接名称](链接地址)    或    &lt;链接地址&gt;    //demo    这是一个链接 [百度搜索](https://www.baidu.com)    &lt;https://www.baidu.com&gt;</code></pre><h3 id="变量链接"><a href="#变量链接" class="headerlink" title="变量链接"></a>变量链接</h3><pre><code>    这个链接用 1 作为网址变量 [百度搜索][1]    这个链接用 runoob 作为网址变量 [百度搜索][test]    一般在文档结尾为变量赋值（网址）    [1]: http://www.google.com/    [test]: http://www.runoob.com/</code></pre><h2 id="第七式-图片"><a href="#第七式-图片" class="headerlink" title="第七式 图片"></a>第七式 图片</h2><p>Markdown图片语法格式如下</p><pre><code>    ![alt 替代文字](图片地址)    ![alt 替代文字](图片地址 "可选的标题")    //demo    ![百度网页](https://www.baidu.com)</code></pre><h3 id="变量图片"><a href="#变量图片" class="headerlink" title="变量图片"></a>变量图片</h3><p>也可以像链接那样，地址放在结尾</p><pre><code>这个链接用 1 作为网址变量 ![RUNOOB][1].然后在文档的结尾位变量赋值（网址）[1]: http://static.runoob.com/images/runoob-logo.png</code></pre><h3 id="控制图片大小"><a href="#控制图片大小" class="headerlink" title="控制图片大小"></a>控制图片大小</h3><p>Markdown的语法无法控制图片大小,但是可以使用img标签控制</p><pre><code>    &lt;img src="http://***.png" width="50%" /&gt;</code></pre><h2 id="第九式-表格"><a href="#第九式-表格" class="headerlink" title="第九式 表格"></a>第九式 表格</h2><p>Markdown是使用|来分割不同单元格的，语法如下</p><pre><code>    |  表头   | 表头  |    |  ----  | ----  |    | 单元格  | 单元格 |    | 单元格  | 单元格 |</code></pre><p>可以设置对其方式:</p><ul><li>-: 设置内容和标题栏居右对齐。</li><li>:- 设置内容和标题栏居左对齐。</li><li>:-: 设置内容和标题栏居中对齐。<pre><code>  | 左对齐 | 右对齐 | 居中对齐 |  | :-----| ----: | :----: |  | 单元格 | 单元格 | 单元格 |  | 单元格 | 单元格 | 单元格 |</code></pre></li></ul><h2 id="第十式-高级操作"><a href="#第十式-高级操作" class="headerlink" title="第十式 高级操作"></a>第十式 高级操作</h2><p>Markdown还可以做流程图、时序图等高级技巧<br>但我认为这些功能<strong>可以，但没必要用</strong> ，不如直接搞一手visio转图片，多香<br>在此推荐一个编写Markdown的免费编辑器，功能强大<br><a href="https://typora.io/" target="_blank" rel="noopener">typora</a><br>以上就是快速入门Markdown的全部内容啦，看完包会</p><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
       <categories>
-        <category>Hexo</category>
+          
+          <category> Markdown </category>
+          
       </categories>
-      <tags>
-        <tag>Hexo</tag>
-      </tags>
-  </entry>
+      
+      
+        <tags>
+            
+            <tag> Markdown </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>hexo更换主题</title>
+      <link href="/2020/01/06/hexo-geng-huan-zhu-ti/"/>
+      <url>/2020/01/06/hexo-geng-huan-zhu-ti/</url>
+      
+        <content type="html"><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>hexo可以自定义各种炫酷的主题，由于第一次使用，先去试用一下github比较热门的集中主题</p><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Hexo常用命令</title>
+      <link href="/2020/01/06/hexo-chang-yong-ming-ling/"/>
+      <url>/2020/01/06/hexo-chang-yong-ming-ling/</url>
+      
+        <content type="html"><![CDATA[<h2 id="创建新文章"><a href="#创建新文章" class="headerlink" title="创建新文章"></a>创建新文章</h2><pre><code>    hexo new [layout] &lt;title&gt;</code></pre><h2 id="发布到github"><a href="#发布到github" class="headerlink" title="发布到github"></a>发布到github</h2><pre><code>    hexo clean //清除之前的东西    hexo generate //生成静态文章    hexo deploy // 部署文章</code></pre><h2 id="Hexo开启本地站点"><a href="#Hexo开启本地站点" class="headerlink" title="Hexo开启本地站点"></a>Hexo开启本地站点</h2><pre><code>    hexo s --debug</code></pre><h2 id="Hexo创建标签-分类-其他页面"><a href="#Hexo创建标签-分类-其他页面" class="headerlink" title="Hexo创建标签/分类/其他页面"></a>Hexo创建标签/分类/其他页面</h2><pre><code>    hexo new page tags //新建标签页面    hexo new page categories //新建分类页面</code></pre><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>初次部署hexo到githubpage</title>
+      <link href="/2020/01/03/chu-ci-bu-shu-hexo-dao-githubpage/"/>
+      <url>/2020/01/03/chu-ci-bu-shu-hexo-dao-githubpage/</url>
+      
+        <content type="html"><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>很久之前就有每天坚持写个人博客的想法，一直没有实现，趁着2020年的到来，开始养成写博客的习惯，希望自己能够坚持。</p><h2 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h2><p>…</p><h2 id="上传源代码"><a href="#上传源代码" class="headerlink" title="上传源代码"></a>上传源代码</h2><p>由于Hexo部署在github的代码是打包之后的页面，而博客源代码则在本地。因此需要将源代码部署到github仓库中。由于安全问题，这里我们选择私有仓库。</p><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> Hexo </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Hexo </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+  
+  
 </search>
