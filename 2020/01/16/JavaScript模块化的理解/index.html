@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>JavaScript模块化的理解 | My Precious</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="前言在开发时经常会听到模块化，比如说CommonJS、AMD、CMD、ES6模块化，但一直没有去了解这些到底是个啥，有什么用。今天在分析源码时就遇到了这些模块化的语法，因此认为还是有必要去了解一番的，在此做个总结。 疑问四部曲：什么是模块，什么时候使用模块化，模块化用在哪？解决了什么问题？理解：模块就是将一个大文件拆分成多个独立且相互依赖的小模块，各个模块可以通过特定语法去引入其他模块，在代码量多">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript模块化的理解">
+<meta property="og:url" content="http://yoursite.com/2020/01/16/JavaScript%E6%A8%A1%E5%9D%97%E5%8C%96%E7%9A%84%E7%90%86%E8%A7%A3/index.html">
+<meta property="og:site_name" content="My Precious">
+<meta property="og:description" content="前言在开发时经常会听到模块化，比如说CommonJS、AMD、CMD、ES6模块化，但一直没有去了解这些到底是个啥，有什么用。今天在分析源码时就遇到了这些模块化的语法，因此认为还是有必要去了解一番的，在此做个总结。 疑问四部曲：什么是模块，什么时候使用模块化，模块化用在哪？解决了什么问题？理解：模块就是将一个大文件拆分成多个独立且相互依赖的小模块，各个模块可以通过特定语法去引入其他模块，在代码量多">
+<meta property="article:published_time" content="2020-01-16T07:21:58.000Z">
+<meta property="article:modified_time" content="2020-05-26T05:57:13.246Z">
+<meta property="article:author" content="神魔恋同学">
+<meta property="article:tag" content="前端">
+<meta property="article:tag" content="JavaScript">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="My Precious" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">My Precious</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-JavaScript模块化的理解" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/01/16/JavaScript%E6%A8%A1%E5%9D%97%E5%8C%96%E7%9A%84%E7%90%86%E8%A7%A3/" class="article-date">
+  <time datetime="2020-01-16T07:21:58.000Z" itemprop="datePublished">2020-01-16</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      JavaScript模块化的理解
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在开发时经常会听到模块化，比如说<font color="#c7254e">CommonJS、AMD、CMD、ES6</font>模块化，但一直没有去了解这些到底是个啥，有什么用。今天在分析源码时就遇到了这些模块化的语法，因此认为还是有必要去了解一番的，在此做个总结。</p>
+<p>疑问四部曲：什么是模块，什么时候使用模块化，模块化用在哪？解决了什么问题？<br>理解：模块就是将一个大文件拆分成多个独立且相互依赖的小模块，各个模块可以通过特定语法去引入其他模块，在代码量多、项目逐渐庞大时使用模块化，解决了以下问题：  </p>
+<ol>
+<li>利于维护，通过引入方式我们可以直观的了解依赖关系</li>
+<li>多人开发时只负责自己独立的一块模块，不需要关心别人写的代码</li>
+<li>不会造成命名冲突</li>
+<li>…  </li>
+</ol>
+<h2 id="CommonJS规范"><a href="#CommonJS规范" class="headerlink" title="CommonJS规范"></a>CommonJS规范</h2><blockquote>
+<p>CommonJS 是以在浏览器环境之外构建 JavaScript 生态系统为目标而产生的项目，比如在服务器和桌面环境中。<br>CommonJS 规范是为了解决 JavaScript 的作用域问题而定义的模块形式，可以使每个模块它自身的命名空间中执行。该规范的主要内容是，模块必须通过 module.exports 导出对外的变量或接口，通过 require() 来导入其他模块的输出到当前模块作用域中。  </p>
+</blockquote>
+<p>Node.js开发者一定会对CommonJS眼熟，因为Node开发就是采用的CommonJS规范，demo如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// moduleA.js</span></span><br><span class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span>(<span class="params"> value </span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> value * <span class="number">2</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// moduleB.js</span></span><br><span class="line"><span class="keyword">var</span> multiplyBy2 = <span class="built_in">require</span>(<span class="string">'./moduleA'</span>);</span><br><span class="line"><span class="keyword">var</span> result = multiplyBy2(<span class="number">4</span>);</span><br></pre></td></tr></table></figure>
+<p>上图的moduleA.js通过<font color="#c7254e">module.exports</font>导出了一个函数，moduleB.js通过<font color="#c7254e">require()</font>去获取了moduleA这个模块，调用了此函数<br>CommonJS加载模块是同步的，虽然是为了服务器和桌面环境产生的规范，但是也有浏览器端的实现。</p>
+<h2 id="AMD规范"><a href="#AMD规范" class="headerlink" title="AMD规范"></a>AMD规范</h2><blockquote>
+<p>AMD（异步模块定义）是为浏览器环境设计的，定义了一套 JavaScript 模块依赖异步加载标准，因为 CommonJS 模块系统是同步加载的，当前浏览器环境还没有准备好同步加载模块的条件。</p>
+</blockquote>
+<p>由于CommonJS是为了服务器和桌面设计的规范，是同步的，那么AMD的不同处就是为了浏览器环境设计的，是异步的，requireJS是基于AMD规范的模块化库。<br>模块通过<font color="#c7254e">define</font>函数定义在闭包中</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">define(id?: <span class="built_in">String</span>, dependencies?: <span class="built_in">String</span>[], <span class="attr">factory</span>: <span class="built_in">Function</span>|<span class="built_in">Object</span>);</span><br></pre></td></tr></table></figure>
+<p><font color="#c7254e">id</font>是可选的，代表模块名。<br><font color="#c7254e">dependencies</font>也是可选的，代表指定所要依赖的模块列表，默认值是[“require”, “exports”, “module”]<br><font color="#c7254e">factory</font>是一个函数或对象，包裹的是模块的具体实现，如果是函数，那么它的返回值就是模块的输出接口或值。<br>光看文字理解起来比较复杂，我们来看看demo帮助理解:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//定义一个名字为myModule的模块，依赖于jQuery模块</span></span><br><span class="line">define(<span class="string">'myModule'</span>, [<span class="string">'jquery'</span>], <span class="function"><span class="keyword">function</span>(<span class="params">$</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// $ 是 jquery 模块的输出</span></span><br><span class="line">    $(<span class="string">'body'</span>).text(<span class="string">'hello world'</span>);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">//使用上面的模块</span></span><br><span class="line"><span class="built_in">require</span>([<span class="string">'myModule'</span>], <span class="function"><span class="keyword">function</span>(<span class="params">myModule</span>) </span>&#123;&#125;);</span><br></pre></td></tr></table></figure>
+<p>我们在使用myModule这个模块时，首先加载了jquery模块，并使用了jquery的语法在页面中输出了一句话，然后再触发回调function，去继续运行function内的代码，由此可见是一个异步的方式</p>
+<h2 id="CMD规范"><a href="#CMD规范" class="headerlink" title="CMD规范"></a>CMD规范</h2><p>CMD与AMD相近，都是异步加载，用于浏览器环境中，seaJS是基于CMD规范的模块化库。<br>不同之处是</p>
+<ol>
+<li>AMD的模块是提前执行的，CMD是延迟执行的。</li>
+<li>AMD推崇定义模块时就要声明依赖的模块(依赖前置)，CMD推崇只有用到某一个模块时再去加载模块(依赖就近)<br>demo如下:<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//AMD</span></span><br><span class="line">define([<span class="string">'./a'</span>,<span class="string">'./b'</span>], <span class="function"><span class="keyword">function</span> (<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">    <span class="comment">//可以直接使用依赖方法</span></span><br><span class="line">    a.test();</span><br><span class="line">    b.test();</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">//CMD</span></span><br><span class="line">define(<span class="function"><span class="keyword">function</span> (<span class="params">requie, exports, module</span>) </span>&#123;</span><br><span class="line">    <span class="comment">//需要使用的时候 在require</span></span><br><span class="line">    <span class="keyword">var</span> a = <span class="built_in">require</span>(<span class="string">'./a'</span>);</span><br><span class="line">    a.test();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="ES6模块化"><a href="#ES6模块化" class="headerlink" title="ES6模块化"></a>ES6模块化</h2><p>ES6已经自带了模块化，而且使用方法更为简单，主要使用的的语法是<font color="#c7254e">export</font>和<font color="#c7254e">import</font>。demo如下:</p>
+<h3 id="export-import-导入导出某变量-函数"><a href="#export-import-导入导出某变量-函数" class="headerlink" title="export/import 导入导出某变量/函数"></a>export/import 导入导出某变量/函数</h3><ol>
+<li>对变量的导入导出<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//第一种导出</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">var</span> name = <span class="string">'lz'</span></span><br><span class="line"><span class="comment">//第二种导出</span></span><br><span class="line"><span class="keyword">var</span> name = <span class="string">'lz'</span></span><br><span class="line"><span class="keyword">export</span> &#123; name &#125;</span><br><span class="line"><span class="comment">//导出的时候重命名</span></span><br><span class="line"><span class="keyword">export</span> &#123;name <span class="keyword">as</span> newName&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//导入</span></span><br><span class="line"><span class="keyword">import</span> &#123; name &#125; <span class="keyword">from</span> <span class="string">'./test.js'</span></span><br><span class="line"><span class="comment">//为变量重新定义名称导入</span></span><br><span class="line"><span class="keyword">import</span> &#123; name <span class="keyword">as</span> newName &#125; <span class="keyword">from</span> <span class="string">'./test.js'</span></span><br></pre></td></tr></table></figure></li>
+<li>对函数的导出导入<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//第一种导出</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">sayHi</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"><span class="comment">//第二种导出</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayHi</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"><span class="keyword">export</span> &#123; sayHi &#125;</span><br><span class="line"><span class="comment">//导出的时候重命名</span></span><br><span class="line"><span class="keyword">export</span> &#123; sayHi <span class="keyword">as</span> newFunction &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//导入</span></span><br><span class="line"><span class="keyword">import</span> &#123; sayHi &#125; <span class="keyword">from</span> <span class="string">'./test.js'</span></span><br><span class="line"><span class="comment">//为变量重新定义名称导入</span></span><br><span class="line"><span class="keyword">import</span> &#123; sayHi <span class="keyword">as</span> newFunction &#125; <span class="keyword">from</span> <span class="string">'./test.js'</span></span><br></pre></td></tr></table></figure></li>
+<li>对变量函数的整体导入<br>之前的例子是针对某一个名称去导入，也可以整体导入<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> test <span class="keyword">from</span> <span class="string">'./test.js</span></span><br></pre></td></tr></table></figure>
+所有的输出值都加载到test这个对象上面，使用时就直接test.××。<br>注意一点，模块整体导入的对象是不允许运行时改变的<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">    <span class="comment">//两者都是不允许的</span></span><br><span class="line">    test.name = <span class="string">'lz'</span></span><br><span class="line">    test.sayHi = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"><span class="string">``</span><span class="string">`  </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">### export defaut的使用</span></span><br><span class="line"><span class="string">之前都是已知函数名、变量名时进行的导入，当然，不需要知道变量/函数名也是可以导入导出。此处用到了&lt;font color="#c7254e"&gt;export defaut&lt;/font&gt;方法，为模块指定默认的输出。  </span></span><br><span class="line"><span class="string">1. 匿名函数的导出导入</span></span><br><span class="line"><span class="string">`</span><span class="string">``</span>javascript</span><br><span class="line">    <span class="comment">//第一种导出</span></span><br><span class="line">    <span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">    <span class="comment">//导入</span></span><br><span class="line">    <span class="keyword">import</span> sayHi <span class="keyword">from</span> <span class="string">'./test.js'</span></span><br><span class="line">    sayHi()</span><br></pre></td></tr></table></figure></li>
+<li>非匿名函数的导出导出<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> <span class="title">sayHi</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"><span class="comment">//或者</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayHi</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> sayHi</span><br><span class="line"></span><br><span class="line"><span class="comment">//上面代码定义的函数名，在模块外部加载是无效的，视为匿名函数</span></span><br><span class="line"><span class="keyword">import</span> sayHi <span class="keyword">from</span> <span class="string">'./test.js'</span></span><br><span class="line"><span class="comment">//或</span></span><br><span class="line"><span class="keyword">import</span> hello <span class="keyword">from</span> <span class="string">'./test'</span></span><br></pre></td></tr></table></figure></li>
+<li>default的本质<br>default的本质其实就是输出一个叫做default的变量或方法，然后允许为它取任何名字。<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayHi</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line"><span class="keyword">export</span> &#123; sayHi <span class="keyword">as</span> <span class="keyword">default</span>&#125;</span><br><span class="line"><span class="comment">//等价于</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> sayHi</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> &#123; <span class="keyword">default</span> <span class="keyword">as</span> sayHi &#125; <span class="keyword">from</span> <span class="string">'./test.js'</span></span><br><span class="line"><span class="comment">//等价于</span></span><br><span class="line"><span class="keyword">import</span> sayHi <span class="keyword">from</span> <span class="string">'./test.js'</span></span><br></pre></td></tr></table></figure>
+所以看出default相当于输出了一个叫default的变量，以下是错误的声明<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//已经声明了一次 </span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">var</span> a = <span class="number">1</span></span><br><span class="line"><span class="comment">//未声明，没有指定对外的接口</span></span><br><span class="line"><span class="keyword">export</span> <span class="number">250</span></span><br></pre></td></tr></table></figure></li>
+<li>export default和export同时使用<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//导出</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> sayHi() &#123;&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hello</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> &#123; hello <span class="keyword">as</span> helloWorld &#125;</span><br><span class="line"><span class="comment">//导入</span></span><br><span class="line"><span class="keyword">import</span> sayHi,&#123; hello, helloWorld &#125; <span class="keyword">from</span> <span class="string">'./test.js'</span></span><br></pre></td></tr></table></figure>
+上面的hello和helloWorld都指向同一个方法，暴露出helloWorld，默认指向hello接口</li>
+<li>export 也可以输出类<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> defalut <span class="class"><span class="keyword">class</span></span>&#123; ... &#125;</span><br></pre></td></tr></table></figure>
+以上就是ES6模块化的基本使用方法。当然ES6的模块化不止这些，比如export和import复合写法、模块继承、跨模块常量等等，这些内容需要深入的学习ES6知识。<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2>前端模块化的内容暂时整理了这么多，后续学到会继续更新。从只听说过模块化，到现在能区分出各个模块的规范及使用方法，这次总结对我来言确实学习到了模块化方面的知识，希望对大家也能有所帮助。</li>
+</ol>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="http://es6.ruanyifeng.com/#docs/module#export-default-%E5%91%BD%E4%BB%A4" target="_blank" rel="noopener">阮一峰-ES6入门</a><br><a href="https://zhaoda.net/webpack-handbook/commonjs.html" target="_blank" rel="noopener">CommonJS规范和AMD规范</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/01/16/JavaScript%E6%A8%A1%E5%9D%97%E5%8C%96%E7%9A%84%E7%90%86%E8%A7%A3/" data-id="ckb5u8bgd000292ucd8tm1l56" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/01/16/markdown%E7%89%B9%E6%AE%8A%E6%8A%80%E5%B7%A7/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          markdown特殊技巧
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/01/09/%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8Bmarkdown/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">快速上手Markdown</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Markdown/">Markdown</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/" rel="tag">Markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/Markdown/" style="font-size: 20px;">Markdown</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 10px;">前端</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/05/28/vue%E7%BB%84%E4%BB%B6%E6%87%92%E5%8A%A0%E8%BD%BD/">vue组件懒加载</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/26/Vue%E5%8D%95%E6%96%87%E4%BB%B6%E6%8B%86%E5%88%86%E4%B9%8Bmixins/">Vue单文件拆分之mixins</a>
+          </li>
+        
+          <li>
+            <a href="/2020/01/16/markdown%E7%89%B9%E6%AE%8A%E6%8A%80%E5%B7%A7/">markdown特殊技巧</a>
+          </li>
+        
+          <li>
+            <a href="/2020/01/16/JavaScript%E6%A8%A1%E5%9D%97%E5%8C%96%E7%9A%84%E7%90%86%E8%A7%A3/">JavaScript模块化的理解</a>
+          </li>
+        
+          <li>
+            <a href="/2020/01/09/%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8Bmarkdown/">快速上手Markdown</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 神魔恋同学<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

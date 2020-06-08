@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>My Precious</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="宁愿犯错">
+<meta property="og:type" content="website">
+<meta property="og:title" content="My Precious">
+<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:site_name" content="My Precious">
+<meta property="og:description" content="宁愿犯错">
+<meta property="article:author" content="神魔恋同学">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="My Precious" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">My Precious</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-vue组件懒加载" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/05/28/vue%E7%BB%84%E4%BB%B6%E6%87%92%E5%8A%A0%E8%BD%BD/" class="article-date">
+  <time datetime="2020-05-28T06:40:53.028Z" itemprop="datePublished">2020-05-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/28/vue%E7%BB%84%E4%BB%B6%E6%87%92%E5%8A%A0%E8%BD%BD/">vue组件懒加载</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Component</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/05/28/vue%E7%BB%84%E4%BB%B6%E6%87%92%E5%8A%A0%E8%BD%BD/" data-id="ckb5u8bgi000792uc2vj1gb6c" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Vue单文件拆分之mixins" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/05/26/Vue%E5%8D%95%E6%96%87%E4%BB%B6%E6%8B%86%E5%88%86%E4%B9%8Bmixins/" class="article-date">
+  <time datetime="2020-05-26T05:59:28.801Z" itemprop="datePublished">2020-05-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/26/Vue%E5%8D%95%E6%96%87%E4%BB%B6%E6%8B%86%E5%88%86%E4%B9%8Bmixins/">Vue单文件拆分之mixins</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>今天get到一个解决方案，关于单vue组件过大拆分的问题。<br>举个例子，有个test的文件，里面的代码量很大，之前是这样解决的：拆分成多个.vue文件，通过组件引入的方式，每个.vue文件都要写template、script。调用子组件的方式需要通过ref。<br>存在的问题：只想引用js，却需要按照通用组件的方式引入，并且每个都需要写template和一个div，带来性能损耗。<br>解决方案：使用vue.js mixins，将不同的逻辑放到不同的js文件里，方法直接通过this调用。</p>
+<h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><p>mixins.js </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">expord <span class="keyword">default</span> &#123;</span><br><span class="line">    data() &#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在test里混合</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">    <span class="keyword">import</span> mixins <span class="keyword">from</span> <span class="string">'../minxins.js'</span></span><br><span class="line">    <span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">        mixins: [mixins]</span><br><span class="line">    &#125;</span><br><span class="line">&lt;<span class="regexp">/scrpit&gt;</span></span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/05/26/Vue%E5%8D%95%E6%96%87%E4%BB%B6%E6%8B%86%E5%88%86%E4%B9%8Bmixins/" data-id="ckb5u8bgf000392uc393u9mbt" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-markdown特殊技巧" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/01/16/markdown%E7%89%B9%E6%AE%8A%E6%8A%80%E5%B7%A7/" class="article-date">
+  <time datetime="2020-01-16T07:49:46.000Z" itemprop="datePublished">2020-01-16</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Markdown/">Markdown</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/01/16/markdown%E7%89%B9%E6%AE%8A%E6%8A%80%E5%B7%A7/">markdown特殊技巧</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="第一式-文字变色"><a href="#第一式-文字变色" class="headerlink" title="第一式 文字变色"></a>第一式 文字变色</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;font face&#x3D;&quot;黑体&quot;&gt;黑体&lt;&#x2F;font&gt;</span><br><span class="line">&lt;font color&#x3D;&quot;c7254e&quot;&gt;文字变色！&lt;&#x2F;font&gt;</span><br><span class="line">&lt;table&gt;&lt;tr&gt;&lt;td bgcolor&#x3D;&quot;c7254e&quot;&gt;背景变色！&lt;&#x2F;td&gt;&lt;&#x2F;tr&gt;&lt;&#x2F;table&gt;</span><br></pre></td></tr></table></figure>
+<p>效果如下:  </p>
+<p><font face="黑体">黑体</font><br><font color="c7254e">文字变色！</font></p>
+<table><tr><td bgcolor="c7254e">背景变色！</td></tr></table>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/01/16/markdown%E7%89%B9%E6%AE%8A%E6%8A%80%E5%B7%A7/" data-id="ckb5u8bgj000892uc95t99php" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Markdown/" rel="tag">Markdown</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-JavaScript模块化的理解" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/01/16/JavaScript%E6%A8%A1%E5%9D%97%E5%8C%96%E7%9A%84%E7%90%86%E8%A7%A3/" class="article-date">
+  <time datetime="2020-01-16T07:21:58.000Z" itemprop="datePublished">2020-01-16</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/01/16/JavaScript%E6%A8%A1%E5%9D%97%E5%8C%96%E7%9A%84%E7%90%86%E8%A7%A3/">JavaScript模块化的理解</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在开发时经常会听到模块化，比如说<font color="#c7254e">CommonJS、AMD、CMD、ES6</font>模块化，但一直没有去了解这些到底是个啥，有什么用。今天在分析源码时就遇到了这些模块化的语法，因此认为还是有必要去了解一番的，在此做个总结。</p>
+<p>疑问四部曲：什么是模块，什么时候使用模块化，模块化用在哪？解决了什么问题？<br>理解：模块就是将一个大文件拆分成多个独立且相互依赖的小模块，各个模块可以通过特定语法去引入其他模块，在代码量多、项目逐渐庞大时使用模块化，解决了以下问题：  </p>
+<ol>
+<li>利于维护，通过引入方式我们可以直观的了解依赖关系</li>
+<li>多人开发时只负责自己独立的一块模块，不需要关心别人写的代码</li>
+<li>不会造成命名冲突</li>
+<li>…  </li>
+</ol>
+<h2 id="CommonJS规范"><a href="#CommonJS规范" class="headerlink" title="CommonJS规范"></a>CommonJS规范</h2><blockquote>
+<p>CommonJS 是以在浏览器环境之外构建 JavaScript 生态系统为目标而产生的项目，比如在服务器和桌面环境中。<br>CommonJS 规范是为了解决 JavaScript 的作用域问题而定义的模块形式，可以使每个模块它自身的命名空间中执行。该规范的主要内容是，模块必须通过 module.exports 导出对外的变量或接口，通过 require() 来导入其他模块的输出到当前模块作用域中。  </p>
+</blockquote>
+<p>Node.js开发者一定会对CommonJS眼熟，因为Node开发就是采用的CommonJS规范，demo如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// moduleA.js</span></span><br><span class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span>(<span class="params"> value </span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> value * <span class="number">2</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// moduleB.js</span></span><br><span class="line"><span class="keyword">var</span> multiplyBy2 = <span class="built_in">require</span>(<span class="string">'./moduleA'</span>);</span><br><span class="line"><span class="keyword">var</span> result = multiplyBy2(<span class="number">4</span>);</span><br></pre></td></tr></table></figure>
+<p>上图的moduleA.js通过<font color="#c7254e">module.exports</font>导出了一个函数，moduleB.js通过<font color="#c7254e">require()</font>去获取了moduleA这个模块，调用了此函数<br>CommonJS加载模块是同步的，虽然是为了服务器和桌面环境产生的规范，但是也有浏览器端的实现。</p>
+<h2 id="AMD规范"><a href="#AMD规范" class="headerlink" title="AMD规范"></a>AMD规范</h2><blockquote>
+<p>AMD（异步模块定义）是为浏览器环境设计的，定义了一套 JavaScript 模块依赖异步加载标准，因为 CommonJS 模块系统是同步加载的，当前浏览器环境还没有准备好同步加载模块的条件。</p>
+</blockquote>
+<p>由于CommonJS是为了服务器和桌面设计的规范，是同步的，那么AMD的不同处就是为了浏览器环境设计的，是异步的，requireJS是基于AMD规范的模块化库。<br>模块通过<font color="#c7254e">define</font>函数定义在闭包中</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">define(id?: <span class="built_in">String</span>, dependencies?: <span class="built_in">String</span>[], <span class="attr">factory</span>: <span class="built_in">Function</span>|<span class="built_in">Object</span>);</span><br></pre></td></tr></table></figure>
+<p><font color="#c7254e">id</font>是可选的，代表模块名。<br><font color="#c7254e">dependencies</font>也是可选的，代表指定所要依赖的模块列表，默认值是[“require”, “exports”, “module”]<br><font color="#c7254e">factory</font>是一个函数或对象，包裹的是模块的具体实现，如果是函数，那么它的返回值就是模块的输出接口或值。<br>光看文字理解起来比较复杂，我们来看看demo帮助理解:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//定义一个名字为myModule的模块，依赖于jQuery模块</span></span><br><span class="line">define(<span class="string">'myModule'</span>, [<span class="string">'jquery'</span>], <span class="function"><span class="keyword">function</span>(<span class="params">$</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// $ 是 jquery 模块的输出</span></span><br><span class="line">    $(<span class="string">'body'</span>).text(<span class="string">'hello world'</span>);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">//使用上面的模块</span></span><br><span class="line"><span class="built_in">require</span>([<span class="string">'myModule'</span>], <span class="function"><span class="keyword">function</span>(<span class="params">myModule</span>) </span>&#123;&#125;);</span><br></pre></td></tr></table></figure>
+<p>我们在使用myModule这个模块时，首先加载了jquery模块，并使用了jquery的语法在页面中输出了一句话，然后再触发回调function，去继续运行function内的代码，由此可见是一个异步的方式</p>
+<h2 id="CMD规范"><a href="#CMD规范" class="headerlink" title="CMD规范"></a>CMD规范</h2><p>CMD与AMD相近，都是异步加载，用于浏览器环境中，seaJS是基于CMD规范的模块化库。<br>不同之处是</p>
+<ol>
+<li>AMD的模块是提前执行的，CMD是延迟执行的。</li>
+<li>AMD推崇定义模块时就要声明依赖的模块(依赖前置)，CMD推崇只有用到某一个模块时再去加载模块(依赖就近)<br>demo如下:<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//AMD</span></span><br><span class="line">define([<span class="string">'./a'</span>,<span class="string">'./b'</span>], <span class="function"><span class="keyword">function</span> (<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">    <span class="comment">//可以直接使用依赖方法</span></span><br><span class="line">    a.test();</span><br><span class="line">    b.test();</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">//CMD</span></span><br><span class="line">define(<span class="function"><span class="keyword">function</span> (<span class="params">requie, exports, module</span>) </span>&#123;</span><br><span class="line">    <span class="comment">//需要使用的时候 在require</span></span><br><span class="line">    <span class="keyword">var</span> a = <span class="built_in">require</span>(<span class="string">'./a'</span>);</span><br><span class="line">    a.test();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="ES6模块化"><a href="#ES6模块化" class="headerlink" title="ES6模块化"></a>ES6模块化</h2><p>ES6已经自带了模块化，而且使用方法更为简单，主要使用的的语法是<font color="#c7254e">export</font>和<font color="#c7254e">import</font>。demo如下:</p>
+<h3 id="export-import-导入导出某变量-函数"><a href="#export-import-导入导出某变量-函数" class="headerlink" title="export/import 导入导出某变量/函数"></a>export/import 导入导出某变量/函数</h3><ol>
+<li>对变量的导入导出<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//第一种导出</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">var</span> name = <span class="string">'lz'</span></span><br><span class="line"><span class="comment">//第二种导出</span></span><br><span class="line"><span class="keyword">var</span> name = <span class="string">'lz'</span></span><br><span class="line"><span class="keyword">export</span> &#123; name &#125;</span><br><span class="line"><span class="comment">//导出的时候重命名</span></span><br><span class="line"><span class="keyword">export</span> &#123;name <span class="keyword">as</span> newName&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//导入</span></span><br><span class="line"><span class="keyword">import</span> &#123; name &#125; <span class="keyword">from</span> <span class="string">'./test.js'</span></span><br><span class="line"><span class="comment">//为变量重新定义名称导入</span></span><br><span class="line"><span class="keyword">import</span> &#123; name <span class="keyword">as</span> newName &#125; <span class="keyword">from</span> <span class="string">'./test.js'</span></span><br></pre></td></tr></table></figure></li>
+<li>对函数的导出导入<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//第一种导出</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">sayHi</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"><span class="comment">//第二种导出</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayHi</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"><span class="keyword">export</span> &#123; sayHi &#125;</span><br><span class="line"><span class="comment">//导出的时候重命名</span></span><br><span class="line"><span class="keyword">export</span> &#123; sayHi <span class="keyword">as</span> newFunction &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//导入</span></span><br><span class="line"><span class="keyword">import</span> &#123; sayHi &#125; <span class="keyword">from</span> <span class="string">'./test.js'</span></span><br><span class="line"><span class="comment">//为变量重新定义名称导入</span></span><br><span class="line"><span class="keyword">import</span> &#123; sayHi <span class="keyword">as</span> newFunction &#125; <span class="keyword">from</span> <span class="string">'./test.js'</span></span><br></pre></td></tr></table></figure></li>
+<li>对变量函数的整体导入<br>之前的例子是针对某一个名称去导入，也可以整体导入<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> test <span class="keyword">from</span> <span class="string">'./test.js</span></span><br></pre></td></tr></table></figure>
+所有的输出值都加载到test这个对象上面，使用时就直接test.××。<br>注意一点，模块整体导入的对象是不允许运行时改变的<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">    <span class="comment">//两者都是不允许的</span></span><br><span class="line">    test.name = <span class="string">'lz'</span></span><br><span class="line">    test.sayHi = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"><span class="string">``</span><span class="string">`  </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">### export defaut的使用</span></span><br><span class="line"><span class="string">之前都是已知函数名、变量名时进行的导入，当然，不需要知道变量/函数名也是可以导入导出。此处用到了&lt;font color="#c7254e"&gt;export defaut&lt;/font&gt;方法，为模块指定默认的输出。  </span></span><br><span class="line"><span class="string">1. 匿名函数的导出导入</span></span><br><span class="line"><span class="string">`</span><span class="string">``</span>javascript</span><br><span class="line">    <span class="comment">//第一种导出</span></span><br><span class="line">    <span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">    <span class="comment">//导入</span></span><br><span class="line">    <span class="keyword">import</span> sayHi <span class="keyword">from</span> <span class="string">'./test.js'</span></span><br><span class="line">    sayHi()</span><br></pre></td></tr></table></figure></li>
+<li>非匿名函数的导出导出<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> <span class="title">sayHi</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"><span class="comment">//或者</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayHi</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> sayHi</span><br><span class="line"></span><br><span class="line"><span class="comment">//上面代码定义的函数名，在模块外部加载是无效的，视为匿名函数</span></span><br><span class="line"><span class="keyword">import</span> sayHi <span class="keyword">from</span> <span class="string">'./test.js'</span></span><br><span class="line"><span class="comment">//或</span></span><br><span class="line"><span class="keyword">import</span> hello <span class="keyword">from</span> <span class="string">'./test'</span></span><br></pre></td></tr></table></figure></li>
+<li>default的本质<br>default的本质其实就是输出一个叫做default的变量或方法，然后允许为它取任何名字。<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayHi</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line"><span class="keyword">export</span> &#123; sayHi <span class="keyword">as</span> <span class="keyword">default</span>&#125;</span><br><span class="line"><span class="comment">//等价于</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> sayHi</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> &#123; <span class="keyword">default</span> <span class="keyword">as</span> sayHi &#125; <span class="keyword">from</span> <span class="string">'./test.js'</span></span><br><span class="line"><span class="comment">//等价于</span></span><br><span class="line"><span class="keyword">import</span> sayHi <span class="keyword">from</span> <span class="string">'./test.js'</span></span><br></pre></td></tr></table></figure>
+所以看出default相当于输出了一个叫default的变量，以下是错误的声明<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//已经声明了一次 </span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">var</span> a = <span class="number">1</span></span><br><span class="line"><span class="comment">//未声明，没有指定对外的接口</span></span><br><span class="line"><span class="keyword">export</span> <span class="number">250</span></span><br></pre></td></tr></table></figure></li>
+<li>export default和export同时使用<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//导出</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> sayHi() &#123;&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">hello</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> &#123; hello <span class="keyword">as</span> helloWorld &#125;</span><br><span class="line"><span class="comment">//导入</span></span><br><span class="line"><span class="keyword">import</span> sayHi,&#123; hello, helloWorld &#125; <span class="keyword">from</span> <span class="string">'./test.js'</span></span><br></pre></td></tr></table></figure>
+上面的hello和helloWorld都指向同一个方法，暴露出helloWorld，默认指向hello接口</li>
+<li>export 也可以输出类<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> defalut <span class="class"><span class="keyword">class</span></span>&#123; ... &#125;</span><br></pre></td></tr></table></figure>
+以上就是ES6模块化的基本使用方法。当然ES6的模块化不止这些，比如export和import复合写法、模块继承、跨模块常量等等，这些内容需要深入的学习ES6知识。<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2>前端模块化的内容暂时整理了这么多，后续学到会继续更新。从只听说过模块化，到现在能区分出各个模块的规范及使用方法，这次总结对我来言确实学习到了模块化方面的知识，希望对大家也能有所帮助。</li>
+</ol>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="http://es6.ruanyifeng.com/#docs/module#export-default-%E5%91%BD%E4%BB%A4" target="_blank" rel="noopener">阮一峰-ES6入门</a><br><a href="https://zhaoda.net/webpack-handbook/commonjs.html" target="_blank" rel="noopener">CommonJS规范和AMD规范</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/01/16/JavaScript%E6%A8%A1%E5%9D%97%E5%8C%96%E7%9A%84%E7%90%86%E8%A7%A3/" data-id="ckb5u8bgd000292ucd8tm1l56" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-快速上手markdown" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/01/09/%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8Bmarkdown/" class="article-date">
+  <time datetime="2020-01-09T11:18:12.000Z" itemprop="datePublished">2020-01-09</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Markdown/">Markdown</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/01/09/%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8Bmarkdown/">快速上手Markdown</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>为什么选用Markdown?<br>Markdown是一种可以使用普通文本编辑器编写的标记语言，通过简单的标记语法，它可以使普通文本内容具有一定的格式。</p>
+<ol>
+<li>易于阅读、具有良好的写作体验</li>
+<li>大多数平台的支持，无缝接入</li>
+<li>上手快，基本上看完这篇文章就能快速入门</li>
+</ol>
+<h2 id="第一式-标题的用法"><a href="#第一式-标题的用法" class="headerlink" title="第一式 标题的用法"></a>第一式 标题的用法</h2><ol>
+<li>使用#号标记 代表一级标题到六级标题<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 一级</span><br><span class="line">## 二级</span><br><span class="line">### 三级</span><br><span class="line">...</span><br></pre></td></tr></table></figure></li>
+<li>使用=号和-标记 一级标题和二级标题<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">一级标题</span><br><span class="line">&#x3D;&#x3D;&#x3D;&#x3D;</span><br><span class="line"></span><br><span class="line">二级标题</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="第二式-段落格式"><a href="#第二式-段落格式" class="headerlink" title="第二式 段落格式"></a>第二式 段落格式</h2><h3 id="换行"><a href="#换行" class="headerlink" title="换行"></a>换行</h3><p>Markdown的换行和一般的文字换行不同，需要两个空格+回车  </p>
+<h3 id="字体"><a href="#字体" class="headerlink" title="字体"></a>字体</h3><p>Markdown可以使用斜体、粗体、粗斜体。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">*斜体文本*</span><br><span class="line">_斜体文本_</span><br><span class="line">**粗体文本**</span><br><span class="line">__粗体文本__</span><br><span class="line">***粗斜体文本***</span><br><span class="line">___粗斜体文本___</span><br></pre></td></tr></table></figure>
+<h3 id="分割线"><a href="#分割线" class="headerlink" title="分割线"></a>分割线</h3><p>分割线的写法有三种 连续的三个以上的星号、减号、底线，中间不能有除空格外的其他符号</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">***</span><br><span class="line"></span><br><span class="line">* * *</span><br><span class="line"></span><br><span class="line">*****</span><br><span class="line"></span><br><span class="line">- - -</span><br><span class="line"></span><br><span class="line">----------</span><br></pre></td></tr></table></figure>
+<h3 id="删除线"><a href="#删除线" class="headerlink" title="删除线"></a>删除线</h3><p>在文字中间添加两个波浪线~即可</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~~hello~~</span><br></pre></td></tr></table></figure>
+
+<h3 id="带下划线文本"><a href="#带下划线文本" class="headerlink" title="带下划线文本"></a>带下划线文本</h3><p>通过HTML的u标签实现</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;u&gt;带下划线的文本&lt;&#x2F;u&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="脚注"><a href="#脚注" class="headerlink" title="脚注"></a>脚注</h3><p>脚注就是对文本的补充说明，Markdown脚注格式如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[^要注明的文本]</span><br></pre></td></tr></table></figure>
+
+<h2 id="第三式-Markdown列表"><a href="#第三式-Markdown列表" class="headerlink" title="第三式 Markdown列表"></a>第三式 Markdown列表</h2><p>Markdown支持有序列表和无序列表，可以使用*、+、-三种作为标记</p>
+<h3 id="有序列表和无序列表"><a href="#有序列表和无序列表" class="headerlink" title="有序列表和无序列表"></a>有序列表和无序列表</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;有序列表</span><br><span class="line"></span><br><span class="line">* 第一项</span><br><span class="line">* 第二项</span><br><span class="line">* 第三项</span><br><span class="line">+ 第一项</span><br><span class="line">+ 第二项</span><br><span class="line">+ 第三项</span><br><span class="line">- 第一项</span><br><span class="line">- 第二项</span><br><span class="line">- 第三项</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;无序列表</span><br><span class="line"></span><br><span class="line">1. 第一项</span><br><span class="line">2. 第二项</span><br><span class="line">3. 第三项</span><br></pre></td></tr></table></figure>
+<h3 id="列表嵌套"><a href="#列表嵌套" class="headerlink" title="列表嵌套"></a>列表嵌套</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1. 第一项：</span><br><span class="line">    - 第一项嵌套的第一个元素</span><br><span class="line">    - 第一项嵌套的第二个元素</span><br><span class="line">2. 第二项：</span><br><span class="line">    - 第二项嵌套的第一个元素</span><br><span class="line">    - 第二项嵌套的第二个元素</span><br></pre></td></tr></table></figure>
+
+<h2 id="第四式-区块"><a href="#第四式-区块" class="headerlink" title="第四式 区块"></a>第四式 区块</h2><h3 id="区块基本用法"><a href="#区块基本用法" class="headerlink" title="区块基本用法"></a>区块基本用法</h3><p>Markdown区块是在段落开头使用&gt;符号，后面紧跟一个空格</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; 区块引用</span><br></pre></td></tr></table></figure>
+<h3 id="嵌套区块"><a href="#嵌套区块" class="headerlink" title="嵌套区块"></a>嵌套区块</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; 最外层</span><br><span class="line">&gt; &gt; 第一层</span><br><span class="line">&gt; &gt; &gt; 第二层</span><br><span class="line">...以此类推</span><br></pre></td></tr></table></figure>
+
+<h2 id="第五式-代码块"><a href="#第五式-代码块" class="headerlink" title="第五式 代码块"></a>第五式 代码块</h2><p>一行段落中有一句代码片段，可以使用`包起来</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#96;console.log()&#96;</span><br></pre></td></tr></table></figure>
+<h3 id="代码区块"><a href="#代码区块" class="headerlink" title="代码区块"></a>代码区块</h3><p>代码区块一般有两种方式<br>第一种是使用4个空格的方式，第二种是```包裹，并指定一种语言，当然也可以不指定</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">（&#96;&#96;&#96;javascript</span><br><span class="line">    console.log(&quot;test&quot;)</span><br><span class="line">  &#96;&#96;&#96;）</span><br></pre></td></tr></table></figure>
+
+<h2 id="第六式-链接"><a href="#第六式-链接" class="headerlink" title="第六式 链接"></a>第六式 链接</h2><p>链接使用方法如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[链接名称](链接地址)</span><br><span class="line">或</span><br><span class="line">&lt;链接地址&gt;</span><br><span class="line">&#x2F;&#x2F;demo</span><br><span class="line">这是一个链接 [百度搜索](https:&#x2F;&#x2F;www.baidu.com)</span><br><span class="line">&lt;https:&#x2F;&#x2F;www.baidu.com&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="变量链接"><a href="#变量链接" class="headerlink" title="变量链接"></a>变量链接</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">这个链接用 1 作为网址变量 [百度搜索][1]</span><br><span class="line">这个链接用 runoob 作为网址变量 [百度搜索][test]</span><br><span class="line">一般在文档结尾为变量赋值（网址）</span><br><span class="line"></span><br><span class="line">[1]: http:&#x2F;&#x2F;www.google.com&#x2F;</span><br><span class="line">[test]: http:&#x2F;&#x2F;www.runoob.com&#x2F;</span><br></pre></td></tr></table></figure>
+
+<h2 id="第七式-图片"><a href="#第七式-图片" class="headerlink" title="第七式 图片"></a>第七式 图片</h2><p>Markdown图片语法格式如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">![alt 替代文字](图片地址)</span><br><span class="line">![alt 替代文字](图片地址 &quot;可选的标题&quot;)</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;demo</span><br><span class="line">![百度网页](https:&#x2F;&#x2F;www.baidu.com)</span><br></pre></td></tr></table></figure>
+<h3 id="变量图片"><a href="#变量图片" class="headerlink" title="变量图片"></a>变量图片</h3><p>也可以像链接那样，地址放在结尾</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">这个链接用 1 作为网址变量 ![RUNOOB][1].</span><br><span class="line">然后在文档的结尾位变量赋值（网址）</span><br><span class="line"></span><br><span class="line">[1]: http:&#x2F;&#x2F;static.runoob.com&#x2F;images&#x2F;runoob-logo.png</span><br></pre></td></tr></table></figure>
+<h3 id="控制图片大小"><a href="#控制图片大小" class="headerlink" title="控制图片大小"></a>控制图片大小</h3><p>Markdown的语法无法控制图片大小,但是可以使用img标签控制</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src&#x3D;&quot;http:&#x2F;&#x2F;***.png&quot; width&#x3D;&quot;50%&quot; &#x2F;&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="第九式-表格"><a href="#第九式-表格" class="headerlink" title="第九式 表格"></a>第九式 表格</h2><p>Markdown是使用|来分割不同单元格的，语法如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">|  表头   | 表头  |</span><br><span class="line">|  ----  | ----  |</span><br><span class="line">| 单元格  | 单元格 |</span><br><span class="line">| 单元格  | 单元格 |</span><br></pre></td></tr></table></figure>
+<p>可以设置对其方式:</p>
+<ul>
+<li>-: 设置内容和标题栏居右对齐。</li>
+<li>:- 设置内容和标题栏居左对齐。</li>
+<li>:-: 设置内容和标题栏居中对齐。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">| 左对齐 | 右对齐 | 居中对齐 |</span><br><span class="line">| :-----| ----: | :----: |</span><br><span class="line">| 单元格 | 单元格 | 单元格 |</span><br><span class="line">| 单元格 | 单元格 | 单元格 |</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="第十式-高级操作"><a href="#第十式-高级操作" class="headerlink" title="第十式 高级操作"></a>第十式 高级操作</h2><p>Markdown还可以做流程图、时序图等高级技巧<br>但我认为这些功能<strong>可以，但没必要用</strong> ，不如直接搞一手visio转图片，多香<br>在此推荐一个编写Markdown的免费编辑器，功能强大<br><a href="https://typora.io/" target="_blank" rel="noopener">typora</a><br>以上就是快速入门Markdown的全部内容啦，看完包会</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/01/09/%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8Bmarkdown/" data-id="ckb5u8bgk000a92uc1f6seq0e" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Markdown/" rel="tag">Markdown</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-hexo更换主题" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/01/06/hexo%E6%9B%B4%E6%8D%A2%E4%B8%BB%E9%A2%98/" class="article-date">
+  <time datetime="2020-01-06T11:53:00.000Z" itemprop="datePublished">2020-01-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/01/06/hexo%E6%9B%B4%E6%8D%A2%E4%B8%BB%E9%A2%98/">hexo更换主题</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>hexo可以自定义各种炫酷的主题，由于第一次使用，先去试用一下github比较热门的集中主题</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/01/06/hexo%E6%9B%B4%E6%8D%A2%E4%B8%BB%E9%A2%98/" data-id="ckb5u8bgh000692uc6pm5efls" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Hexo常用命令" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/01/06/Hexo%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" class="article-date">
+  <time datetime="2020-01-06T11:39:57.000Z" itemprop="datePublished">2020-01-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/01/06/Hexo%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">Hexo常用命令</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="创建新文章"><a href="#创建新文章" class="headerlink" title="创建新文章"></a>创建新文章</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new [layout] &lt;title&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="发布到github"><a href="#发布到github" class="headerlink" title="发布到github"></a>发布到github</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean &#x2F;&#x2F;清除之前的东西</span><br><span class="line">hexo generate &#x2F;&#x2F;生成静态文章</span><br><span class="line">hexo deploy &#x2F;&#x2F; 部署文章</span><br></pre></td></tr></table></figure>
+
+<h2 id="Hexo开启本地站点"><a href="#Hexo开启本地站点" class="headerlink" title="Hexo开启本地站点"></a>Hexo开启本地站点</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo s --debug</span><br></pre></td></tr></table></figure>
+
+<h2 id="Hexo创建标签-分类-其他页面"><a href="#Hexo创建标签-分类-其他页面" class="headerlink" title="Hexo创建标签/分类/其他页面"></a>Hexo创建标签/分类/其他页面</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo new page tags &#x2F;&#x2F;新建标签页面</span><br><span class="line">hexo new page categories &#x2F;&#x2F;新建分类页面</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/01/06/Hexo%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" data-id="ckb5u8bg8000092uc868ncr52" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-初次部署hexo到githubpage" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/01/03/%E5%88%9D%E6%AC%A1%E9%83%A8%E7%BD%B2hexo%E5%88%B0githubpage/" class="article-date">
+  <time datetime="2020-01-03T10:32:51.000Z" itemprop="datePublished">2020-01-03</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Hexo/">Hexo</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/01/03/%E5%88%9D%E6%AC%A1%E9%83%A8%E7%BD%B2hexo%E5%88%B0githubpage/">初次部署hexo到githubpage</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>很久之前就有每天坚持写个人博客的想法，一直没有实现，趁着2020年的到来，开始养成写博客的习惯，希望自己能够坚持。</p>
+<h2 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h2><p>…</p>
+<h2 id="上传源代码"><a href="#上传源代码" class="headerlink" title="上传源代码"></a>上传源代码</h2><p>由于Hexo部署在github的代码是打包之后的页面，而博客源代码则在本地。因此需要将源代码部署到github仓库中。由于安全问题，这里我们选择私有仓库。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/01/03/%E5%88%9D%E6%AC%A1%E9%83%A8%E7%BD%B2hexo%E5%88%B0githubpage/" data-id="ckb5u8bgl000c92uc29404t89" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Markdown/">Markdown</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/" rel="tag">Markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag">前端</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/JavaScript/" style="font-size: 10px;">JavaScript</a> <a href="/tags/Markdown/" style="font-size: 20px;">Markdown</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 10px;">前端</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/05/28/vue%E7%BB%84%E4%BB%B6%E6%87%92%E5%8A%A0%E8%BD%BD/">vue组件懒加载</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/26/Vue%E5%8D%95%E6%96%87%E4%BB%B6%E6%8B%86%E5%88%86%E4%B9%8Bmixins/">Vue单文件拆分之mixins</a>
+          </li>
+        
+          <li>
+            <a href="/2020/01/16/markdown%E7%89%B9%E6%AE%8A%E6%8A%80%E5%B7%A7/">markdown特殊技巧</a>
+          </li>
+        
+          <li>
+            <a href="/2020/01/16/JavaScript%E6%A8%A1%E5%9D%97%E5%8C%96%E7%9A%84%E7%90%86%E8%A7%A3/">JavaScript模块化的理解</a>
+          </li>
+        
+          <li>
+            <a href="/2020/01/09/%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8Bmarkdown/">快速上手Markdown</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 神魔恋同学<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
