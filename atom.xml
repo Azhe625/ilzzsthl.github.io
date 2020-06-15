@@ -2,11 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>谦谦君子，温润如玉</title>
   
-  
+  <subtitle>web log</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-05-28T06:41:12.521Z</updated>
+  <updated>2020-06-15T10:33:48.024Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>vue组件懒加载</title>
-    <link href="http://yoursite.com/2020/05/28/vue-zu-jian-lan-jia-zai/"/>
-    <id>http://yoursite.com/2020/05/28/vue-zu-jian-lan-jia-zai/</id>
-    <published>2020-05-28T06:40:53.028Z</published>
-    <updated>2020-05-28T06:41:12.521Z</updated>
+    <title>JavaScript数据类型转换</title>
+    <link href="http://yoursite.com/2020/06/15/javascript-shu-ju-lei-xing-zhuan-huan/"/>
+    <id>http://yoursite.com/2020/06/15/javascript-shu-ju-lei-xing-zhuan-huan/</id>
+    <published>2020-06-15T07:08:23.000Z</published>
+    <updated>2020-06-15T10:33:48.024Z</updated>
     
     <summary type="html">
     
@@ -29,26 +29,27 @@
       
         
         
-          &lt;p&gt;Component&lt;/p&gt;
-&lt;script&gt;
-        document.querySelectorAll(&#39;.github-emoji&#39;)
-          .forEach(el =&gt; {
-            if (!el.dataset.src) {
+          &lt;p&gt;js是一门动态弱类型语言，使得在开发时提供了很多便利，但坑点大多也是来源于此，因此，搞懂了类型转换的细节就能避免多数开发时遇到的坑，本文将用最短的文字来解释清楚类型转换。&lt;/p&gt;
+&lt;h3 id=&quot;1-类型转换的区别&quot;&gt;&lt;a href=&quot;#1-类型转换的区别&quot;
         
       
     
     </summary>
     
     
+      <category term="JavaScript" scheme="http://yoursite.com/categories/JavaScript/"/>
+    
+    
+      <category term="JavaScript" scheme="http://yoursite.com/tags/JavaScript/"/>
     
   </entry>
   
   <entry>
     <title>vue单文件拆分之mixins</title>
-    <link href="http://yoursite.com/2020/01/16/vue-dan-wen-jian-chai-fen-zhi-mixins/"/>
-    <id>http://yoursite.com/2020/01/16/vue-dan-wen-jian-chai-fen-zhi-mixins/</id>
-    <published>2020-01-16T07:49:46.000Z</published>
-    <updated>2020-06-08T10:21:06.662Z</updated>
+    <link href="http://yoursite.com/2020/05/25/vue-dan-wen-jian-chai-fen-zhi-mixins/"/>
+    <id>http://yoursite.com/2020/05/25/vue-dan-wen-jian-chai-fen-zhi-mixins/</id>
+    <published>2020-05-25T07:49:46.000Z</published>
+    <updated>2020-06-15T07:05:20.313Z</updated>
     
     <summary type="html">
     
@@ -133,7 +134,7 @@
     <link href="http://yoursite.com/2020/01/09/kuai-su-shang-shou-markdown/"/>
     <id>http://yoursite.com/2020/01/09/kuai-su-shang-shou-markdown/</id>
     <published>2020-01-09T11:18:12.000Z</published>
-    <updated>2020-05-26T05:57:13.247Z</updated>
+    <updated>2020-06-08T10:35:23.392Z</updated>
     
     <summary type="html">
     
@@ -152,31 +153,6 @@
     
     
       <category term="Markdown" scheme="http://yoursite.com/tags/Markdown/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>hexo更换主题</title>
-    <link href="http://yoursite.com/2020/01/06/hexo-geng-huan-zhu-ti/"/>
-    <id>http://yoursite.com/2020/01/06/hexo-geng-huan-zhu-ti/</id>
-    <published>2020-01-06T11:53:00.000Z</published>
-    <updated>2020-05-26T05:57:13.247Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot; title=&quot;背景&quot;&gt;&lt;/a&gt;背景&lt;/h2&gt;&lt;p&gt;hexo可以自定义各种炫酷的主题，由于第一次使用，先去试用一下github比较热门的集中主题&lt;/p&gt;
-&lt;script&gt;
-       
-        
-      
-    
-    </summary>
-    
-    
     
   </entry>
   
@@ -200,34 +176,6 @@
     </summary>
     
     
-    
-  </entry>
-  
-  <entry>
-    <title>初次部署hexo到githubpage</title>
-    <link href="http://yoursite.com/2020/01/03/chu-ci-bu-shu-hexo-dao-githubpage/"/>
-    <id>http://yoursite.com/2020/01/03/chu-ci-bu-shu-hexo-dao-githubpage/</id>
-    <published>2020-01-03T10:32:51.000Z</published>
-    <updated>2020-05-26T05:57:13.247Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;h2 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot; title=&quot;背景&quot;&gt;&lt;/a&gt;背景&lt;/h2&gt;&lt;p&gt;很久之前就有每天坚持写个人博客的想法，一直没有实现，趁着2020年的到来，开始养成写博客的习惯，希望自己能够坚持。&lt;/p&gt;
-&lt;h2
-        
-      
-    
-    </summary>
-    
-    
-      <category term="Hexo" scheme="http://yoursite.com/categories/Hexo/"/>
-    
-    
-      <category term="Hexo" scheme="http://yoursite.com/tags/Hexo/"/>
     
   </entry>
   
