@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="JavaScript模块化的理解, 谦谦君子，温润如玉">
+    <meta name="keywords" content="闭包的理解, 谦谦君子，温润如玉">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>JavaScript模块化的理解 | 谦谦君子，温润如玉</title>
+    <title>闭包的理解 | 谦谦君子，温润如玉</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -309,12 +309,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/18.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">JavaScript模块化的理解</h1>
+                    <h1 class="description center-align post-title">闭包的理解</h1>
                 </div>
             </div>
         </div>
@@ -435,23 +435,14 @@
                                 <span class="chip bg-color">JavaScript</span>
                             </a>
                         
-                            <a href="/tags/%E5%89%8D%E7%AB%AF/">
-                                <span class="chip bg-color">前端</span>
+                            <a href="/tags/%E9%97%AD%E5%8C%85/">
+                                <span class="chip bg-color">闭包</span>
                             </a>
                         
                     </div>
                     
                 </div>
                 <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/categories/%E5%89%8D%E7%AB%AF/" class="post-category">
-                                前端
-                            </a>
-                        
-                    </div>
                     
                 </div>
             </div>
@@ -460,28 +451,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-01-16
+                    2020-06-16
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-05-26
+                    2020-06-16
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.8k
+                    244
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    7 分
+                    1 分
                 </div>
                 
 
@@ -496,147 +487,8 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在开发时经常会听到模块化，比如说<font color="#c7254e">CommonJS、AMD、CMD、ES6</font>模块化，但一直没有去了解这些到底是个啥，有什么用。今天在分析源码时就遇到了这些模块化的语法，因此认为还是有必要去了解一番的，在此做个总结。</p>
-<p>疑问四部曲：什么是模块，什么时候使用模块化，模块化用在哪？解决了什么问题？<br>理解：模块就是将一个大文件拆分成多个独立且相互依赖的小模块，各个模块可以通过特定语法去引入其他模块，在代码量多、项目逐渐庞大时使用模块化，解决了以下问题：  </p>
-<ol>
-<li>利于维护，通过引入方式我们可以直观的了解依赖关系</li>
-<li>多人开发时只负责自己独立的一块模块，不需要关心别人写的代码</li>
-<li>不会造成命名冲突</li>
-<li>…  </li>
-</ol>
-<h2 id="CommonJS规范"><a href="#CommonJS规范" class="headerlink" title="CommonJS规范"></a>CommonJS规范</h2><blockquote>
-<p>CommonJS 是以在浏览器环境之外构建 JavaScript 生态系统为目标而产生的项目，比如在服务器和桌面环境中。<br>CommonJS 规范是为了解决 JavaScript 的作用域问题而定义的模块形式，可以使每个模块它自身的命名空间中执行。该规范的主要内容是，模块必须通过 module.exports 导出对外的变量或接口，通过 require() 来导入其他模块的输出到当前模块作用域中。  </p>
-</blockquote>
-<p>Node.js开发者一定会对CommonJS眼熟，因为Node开发就是采用的CommonJS规范，demo如下：</p>
-<pre class=" language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">// moduleA.js</span>
-module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span> value <span class="token punctuation">)</span><span class="token punctuation">{</span>
-    <span class="token keyword">return</span> value <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token comment" spellcheck="true">// moduleB.js</span>
-<span class="token keyword">var</span> multiplyBy2 <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'./moduleA'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">var</span> result <span class="token operator">=</span> <span class="token function">multiplyBy2</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<p>上图的moduleA.js通过<font color="#c7254e">module.exports</font>导出了一个函数，moduleB.js通过<font color="#c7254e">require()</font>去获取了moduleA这个模块，调用了此函数<br>CommonJS加载模块是同步的，虽然是为了服务器和桌面环境产生的规范，但是也有浏览器端的实现。</p>
-<h2 id="AMD规范"><a href="#AMD规范" class="headerlink" title="AMD规范"></a>AMD规范</h2><blockquote>
-<p>AMD（异步模块定义）是为浏览器环境设计的，定义了一套 JavaScript 模块依赖异步加载标准，因为 CommonJS 模块系统是同步加载的，当前浏览器环境还没有准备好同步加载模块的条件。</p>
-</blockquote>
-<p>由于CommonJS是为了服务器和桌面设计的规范，是同步的，那么AMD的不同处就是为了浏览器环境设计的，是异步的，requireJS是基于AMD规范的模块化库。<br>模块通过<font color="#c7254e">define</font>函数定义在闭包中</p>
-<pre class=" language-javascript"><code class="language-javascript">    <span class="token function">define</span><span class="token punctuation">(</span>id<span class="token operator">?</span><span class="token punctuation">:</span> String<span class="token punctuation">,</span> dependencies<span class="token operator">?</span><span class="token punctuation">:</span> String<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> factory<span class="token punctuation">:</span> Function<span class="token operator">|</span>Object<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<p><font color="#c7254e">id</font>是可选的，代表模块名。<br><font color="#c7254e">dependencies</font>也是可选的，代表指定所要依赖的模块列表，默认值是[“require”, “exports”, “module”]<br><font color="#c7254e">factory</font>是一个函数或对象，包裹的是模块的具体实现，如果是函数，那么它的返回值就是模块的输出接口或值。<br>光看文字理解起来比较复杂，我们来看看demo帮助理解:</p>
-<pre class=" language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">//定义一个名字为myModule的模块，依赖于jQuery模块</span>
-<span class="token function">define</span><span class="token punctuation">(</span><span class="token string">'myModule'</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">'jquery'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>$<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token comment" spellcheck="true">// $ 是 jquery 模块的输出</span>
-    <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'body'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">text</span><span class="token punctuation">(</span><span class="token string">'hello world'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment" spellcheck="true">//使用上面的模块</span>
-<span class="token function">require</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'myModule'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>myModule<span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<p>我们在使用myModule这个模块时，首先加载了jquery模块，并使用了jquery的语法在页面中输出了一句话，然后再触发回调function，去继续运行function内的代码，由此可见是一个异步的方式</p>
-<h2 id="CMD规范"><a href="#CMD规范" class="headerlink" title="CMD规范"></a>CMD规范</h2><p>CMD与AMD相近，都是异步加载，用于浏览器环境中，seaJS是基于CMD规范的模块化库。<br>不同之处是</p>
-<ol>
-<li>AMD的模块是提前执行的，CMD是延迟执行的。</li>
-<li>AMD推崇定义模块时就要声明依赖的模块(依赖前置)，CMD推崇只有用到某一个模块时再去加载模块(依赖就近)<br>demo如下:<pre class=" language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">//AMD</span>
-<span class="token function">define</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'./a'</span><span class="token punctuation">,</span><span class="token string">'./b'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span> <span class="token punctuation">{</span>
- <span class="token comment" spellcheck="true">//可以直接使用依赖方法</span>
- a<span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
- b<span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre>
-</li>
-</ol>
-<p>//CMD<br>define(function (requie, exports, module) {<br>    //需要使用的时候 在require<br>    var a = require(‘./a’);<br>    a.test();<br>});</p>
-<pre><code>
-## ES6模块化
-ES6已经自带了模块化，而且使用方法更为简单，主要使用的的语法是&lt;font color="#c7254e"&gt;export&lt;/font&gt;和&lt;font color="#c7254e"&gt;import&lt;/font&gt;。demo如下:
-### export/import 导入导出某变量/函数
-1. 对变量的导入导出
-```javascript
-    //第一种导出
-    export var name = 'lz'
-    //第二种导出
-    var name = 'lz'
-    export { name }
-    //导出的时候重命名
-    export {name as newName}
-
-    //导入
-    import { name } from './test.js'
-    //为变量重新定义名称导入
-    import { name as newName } from './test.js'</code></pre><ol start="2">
-<li><p>对函数的导出导入</p>
-<pre class=" language-javascript"><code class="language-javascript"> <span class="token comment" spellcheck="true">//第一种导出</span>
- <span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">sayHi</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
- <span class="token comment" spellcheck="true">//第二种导出</span>
- <span class="token keyword">function</span> <span class="token function">sayHi</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
- <span class="token keyword">export</span> <span class="token punctuation">{</span> sayHi <span class="token punctuation">}</span>
- <span class="token comment" spellcheck="true">//导出的时候重命名</span>
- <span class="token keyword">export</span> <span class="token punctuation">{</span> sayHi <span class="token keyword">as</span> newFunction <span class="token punctuation">}</span>
-
- <span class="token comment" spellcheck="true">//导入</span>
- <span class="token keyword">import</span> <span class="token punctuation">{</span> sayHi <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./test.js'</span>
- <span class="token comment" spellcheck="true">//为变量重新定义名称导入</span>
- <span class="token keyword">import</span> <span class="token punctuation">{</span> sayHi <span class="token keyword">as</span> newFunction <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./test.js'</span></code></pre>
-</li>
-<li><p>对变量函数的整体导入<br>之前的例子是针对某一个名称去导入，也可以整体导入</p>
-<pre class=" language-javascript"><code class="language-javascript"> <span class="token keyword">import</span> <span class="token operator">*</span> <span class="token keyword">as</span> test <span class="token keyword">from</span> '<span class="token punctuation">.</span><span class="token operator">/</span>test<span class="token punctuation">.</span>js</code></pre>
-<p>所有的输出值都加载到test这个对象上面，使用时就直接test.××。<br>注意一点，模块整体导入的对象是不允许运行时改变的</p>
-<pre class=" language-javascript"><code class="language-javascript"> <span class="token comment" spellcheck="true">//两者都是不允许的</span>
- test<span class="token punctuation">.</span>name <span class="token operator">=</span> <span class="token string">'lz'</span>
- test<span class="token punctuation">.</span>sayHi <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span></code></pre>
-</li>
-</ol>
-<h3 id="export-defaut的使用"><a href="#export-defaut的使用" class="headerlink" title="export defaut的使用"></a>export defaut的使用</h3><p>之前都是已知函数名、变量名时进行的导入，当然，不需要知道变量/函数名也是可以导入导出。此处用到了<font color="#c7254e">export defaut</font>方法，为模块指定默认的输出。  </p>
-<ol>
-<li><p>匿名函数的导出导入</p>
-<pre class=" language-javascript"><code class="language-javascript"> <span class="token comment" spellcheck="true">//第一种导出</span>
- <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
- <span class="token comment" spellcheck="true">//导入</span>
- <span class="token keyword">import</span> sayHi <span class="token keyword">from</span> <span class="token string">'./test.js'</span>
- <span class="token function">sayHi</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
-</li>
-<li><p>非匿名函数的导出导出</p>
-<pre class=" language-javascript"><code class="language-javascript"> <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">function</span> <span class="token function">sayHi</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
- <span class="token comment" spellcheck="true">//或者</span>
- <span class="token keyword">function</span> <span class="token function">sayHi</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
- <span class="token keyword">export</span> <span class="token keyword">default</span> sayHi
-
- <span class="token comment" spellcheck="true">//上面代码定义的函数名，在模块外部加载是无效的，视为匿名函数</span>
- <span class="token keyword">import</span> sayHi <span class="token keyword">from</span> <span class="token string">'./test.js'</span>
- <span class="token comment" spellcheck="true">//或</span>
- <span class="token keyword">import</span> hello <span class="token keyword">from</span> <span class="token string">'./test'</span></code></pre>
-</li>
-<li><p>default的本质<br>default的本质其实就是输出一个叫做default的变量或方法，然后允许为它取任何名字。</p>
-<pre class=" language-javascript"><code class="language-javascript"> <span class="token keyword">function</span> <span class="token function">sayHi</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span>
- <span class="token keyword">export</span> <span class="token punctuation">{</span> sayHi <span class="token keyword">as</span> <span class="token keyword">default</span><span class="token punctuation">}</span>
- <span class="token comment" spellcheck="true">//等价于</span>
- <span class="token keyword">export</span> <span class="token keyword">default</span> sayHi
-
- <span class="token keyword">import</span> <span class="token punctuation">{</span> <span class="token keyword">default</span> <span class="token keyword">as</span> sayHi <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./test.js'</span>
- <span class="token comment" spellcheck="true">//等价于</span>
- <span class="token keyword">import</span> sayHi <span class="token keyword">from</span> <span class="token string">'./test.js'</span></code></pre>
-<p>所以看出default相当于输出了一个叫default的变量，以下是错误的声明</p>
-<pre class=" language-javascript"><code class="language-javascript"> <span class="token comment" spellcheck="true">//已经声明了一次 </span>
- <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token number">1</span>
- <span class="token comment" spellcheck="true">//未声明，没有指定对外的接口</span>
- <span class="token keyword">export</span> <span class="token number">250</span></code></pre>
-</li>
-<li><p>export default和export同时使用</p>
-<pre class=" language-javascript"><code class="language-javascript"> <span class="token comment" spellcheck="true">//导出</span>
- <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">sayHi</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
- <span class="token keyword">function</span> <span class="token function">hello</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-
- <span class="token punctuation">}</span>
- <span class="token keyword">export</span> <span class="token punctuation">{</span> hello <span class="token keyword">as</span> helloWorld <span class="token punctuation">}</span>
- <span class="token comment" spellcheck="true">//导入</span>
- <span class="token keyword">import</span> sayHi<span class="token punctuation">,</span><span class="token punctuation">{</span> hello<span class="token punctuation">,</span> helloWorld <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./test.js'</span></code></pre>
-<p>上面的hello和helloWorld都指向同一个方法，暴露出helloWorld，默认指向hello接口</p>
-</li>
-<li><p>export 也可以输出类</p>
-<pre class=" language-javascript"><code class="language-javascript"> <span class="token keyword">export</span> defalut <span class="token keyword">class</span><span class="token punctuation">{</span> <span class="token operator">...</span> <span class="token punctuation">}</span></code></pre>
-<p>以上就是ES6模块化的基本使用方法。当然ES6的模块化不止这些，比如export和import复合写法、模块继承、跨模块常量等等，这些内容需要深入的学习ES6知识。</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>前端模块化的内容暂时整理了这么多，后续学到会继续更新。从只听说过模块化，到现在能区分出各个模块的规范及使用方法，这次总结对我来言确实学习到了模块化方面的知识，希望对大家也能有所帮助。</p>
-</li>
-</ol>
-<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="http://es6.ruanyifeng.com/#docs/module#export-default-%E5%91%BD%E4%BB%A4" target="_blank" rel="noopener">阮一峰-ES6入门</a><br><a href="https://zhaoda.net/webpack-handbook/commonjs.html" target="_blank" rel="noopener">CommonJS规范和AMD规范</a></p>
+                <h2 id="闭包是什么？"><a href="#闭包是什么？" class="headerlink" title="闭包是什么？"></a>闭包是什么？</h2><p>定义： 可以访问其他函数作用域内变量的函数叫做闭包(js高程)。<br>举例： 比如说函数A内部有个函数B，函数B可以访问到A中的变量，那么函数B就是闭包。<br>用途： 可以在外部<strong>间接访问</strong>函数内部的变量</p>
+<h2 id="闭包会引起内存泄漏？"><a href="#闭包会引起内存泄漏？" class="headerlink" title="闭包会引起内存泄漏？"></a>闭包会引起内存泄漏？</h2><p>错。内存泄漏是指用不到的变量，依然占据着内存空间，不能被再次利用起来。 而闭包里的变量是我们需要的变量，不能说是内存泄漏。那么，这个内存泄漏的说法是哪儿来的？答案是IE的一个bug，IE在我们使用完闭包后，回收不了闭包里引用的变量。</p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -680,7 +532,7 @@ ES6已经自带了模块化，而且使用方法更为简单，主要使用的�
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://yoursite.com/2020/01/16/javascript-mo-kuai-hua-de-li-jie/">http://yoursite.com/2020/01/16/javascript-mo-kuai-hua-de-li-jie/</a>
+                    <a href="http://yoursite.com/2020/06/16/bi-bao-de-li-jie/">http://yoursite.com/2020/06/16/bi-bao-de-li-jie/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -722,8 +574,8 @@ ES6已经自带了模块化，而且使用方法更为简单，主要使用的�
                                     <span class="chip bg-color">JavaScript</span>
                                 </a>
                             
-                                <a href="/tags/%E5%89%8D%E7%AB%AF/">
-                                    <span class="chip bg-color">前端</span>
+                                <a href="/tags/%E9%97%AD%E5%8C%85/">
+                                    <span class="chip bg-color">闭包</span>
                                 </a>
                             
                         </div>
@@ -891,48 +743,49 @@ ES6已经自带了模块化，而且使用方法更为简单，主要使用的�
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2020/01/16/markdown-te-shu-ji-qiao/">
+                <a href="/2020/06/16/bi-bao-de-li-jie/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="markdown特殊技巧">
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="闭包的理解">
                         
-                        <span class="card-title">markdown特殊技巧</span>
+                        <span class="card-title">闭包的理解</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            第一式 文字变色&lt;font face="黑体"&gt;黑体&lt;/font&gt;
-&lt;font color="c7254e"&gt;文字变色！&lt;/font&gt;
-&lt;table&gt;&lt;tr&gt;&lt;t
+                            闭包是什么？定义： 可以访问其他函数作用域内变量的函数叫做闭包(js高程)。举例： 比如说函数A内部有个函数B，函数B可以访问到A中的变量，那么函数B就是闭包。用途： 可以在外部间接访问函数内部的变量
+闭包会引起内存泄漏？错。内存泄漏是指用
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-01-16
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-06-16
+                            </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/Markdown/" class="post-category">
-                                    Markdown
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            神魔恋同学
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Markdown/">
-                        <span class="chip bg-color">Markdown</span>
+                    <a href="/tags/JavaScript/">
+                        <span class="chip bg-color">JavaScript</span>
+                    </a>
+                    
+                    <a href="/tags/%E9%97%AD%E5%8C%85/">
+                        <span class="chip bg-color">闭包</span>
                     </a>
                     
                 </div>
@@ -946,35 +799,34 @@ ES6已经自带了模块化，而且使用方法更为简单，主要使用的�
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/01/09/kuai-su-shang-shou-markdown/">
+                <a href="/2020/06/15/javascript-shu-ju-lei-xing-zhuan-huan/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="快速上手Markdown">
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="JavaScript数据类型转换">
                         
-                        <span class="card-title">快速上手Markdown</span>
+                        <span class="card-title">JavaScript数据类型转换</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            前言为什么选用Markdown?Markdown是一种可以使用普通文本编辑器编写的标记语言，通过简单的标记语法，它可以使普通文本内容具有一定的格式。
+                            js是一门动态弱类型语言，使得在开发时提供了很多便利，但坑点大多也是来源于此，因此，搞懂了类型转换的细节就能避免多数开发时遇到的坑，本文将用最短的文字来解释清楚类型转换。
+1. 类型转换的区别主要是分为显式转换和隐式转换：  
 
-易于阅读、具有良好的写作体验
-大多数平台的支持，无缝接入
-上手快，基本上看完这篇文章就能
+显式转换：
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-01-09
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-06-15
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Markdown/" class="post-category">
-                                    Markdown
+                            <a href="/categories/JavaScript/" class="post-category">
+                                    JavaScript
                                 </a>
                             
                             
@@ -984,8 +836,8 @@ ES6已经自带了模块化，而且使用方法更为简单，主要使用的�
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Markdown/">
-                        <span class="chip bg-color">Markdown</span>
+                    <a href="/tags/JavaScript/">
+                        <span class="chip bg-color">JavaScript</span>
                     </a>
                     
                 </div>

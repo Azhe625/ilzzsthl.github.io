@@ -1,6 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>闭包的理解</title>
+    <url>/2020/06/16/bi-bao-de-li-jie/</url>
+    <content><![CDATA[<h2 id="闭包是什么？"><a href="#闭包是什么？" class="headerlink" title="闭包是什么？"></a>闭包是什么？</h2><p>定义： 可以访问其他函数作用域内变量的函数叫做闭包(js高程)。<br>举例： 比如说函数A内部有个函数B，函数B可以访问到A中的变量，那么函数B就是闭包。<br>用途： 可以在外部<strong>间接访问</strong>函数内部的变量</p>
+<h2 id="闭包会引起内存泄漏？"><a href="#闭包会引起内存泄漏？" class="headerlink" title="闭包会引起内存泄漏？"></a>闭包会引起内存泄漏？</h2><p>错。内存泄漏是指用不到的变量，依然占据着内存空间，不能被再次利用起来。 而闭包里的变量是我们需要的变量，不能说是内存泄漏。那么，这个内存泄漏的说法是哪儿来的？答案是IE的一个bug，IE在我们使用完闭包后，回收不了闭包里引用的变量。</p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>]]></content>
+      <tags>
+        <tag>JavaScript</tag>
+        <tag>闭包</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>JavaScript数据类型转换</title>
     <url>/2020/06/15/javascript-shu-ju-lei-xing-zhuan-huan/</url>
     <content><![CDATA[<p>js是一门动态弱类型语言，使得在开发时提供了很多便利，但坑点大多也是来源于此，因此，搞懂了类型转换的细节就能避免多数开发时遇到的坑，本文将用最短的文字来解释清楚类型转换。</p>
@@ -294,8 +323,8 @@ ES6已经自带了模块化，而且使用方法更为简单，主要使用的�
         <category>前端</category>
       </categories>
       <tags>
-        <tag>前端</tag>
         <tag>JavaScript</tag>
+        <tag>前端</tag>
       </tags>
   </entry>
   <entry>

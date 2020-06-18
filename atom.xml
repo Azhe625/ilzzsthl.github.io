@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-06-15T10:33:48.024Z</updated>
+  <updated>2020-06-16T02:32:24.199Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>闭包的理解</title>
+    <link href="http://yoursite.com/2020/06/16/bi-bao-de-li-jie/"/>
+    <id>http://yoursite.com/2020/06/16/bi-bao-de-li-jie/</id>
+    <published>2020-06-16T02:20:22.000Z</published>
+    <updated>2020-06-16T02:32:24.199Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;闭包是什么？&quot;&gt;&lt;a href=&quot;#闭包是什么？&quot; class=&quot;headerlink&quot; title=&quot;闭包是什么？&quot;&gt;&lt;/a&gt;闭包是什么？&lt;/h2&gt;&lt;p&gt;定义： 可以访问其他函数作用域内变量的函数叫做闭包(js高程)。&lt;br&gt;举例：
+        
+      
+    
+    </summary>
+    
+    
+    
+      <category term="JavaScript" scheme="http://yoursite.com/tags/JavaScript/"/>
+    
+      <category term="闭包" scheme="http://yoursite.com/tags/%E9%97%AD%E5%8C%85/"/>
+    
+  </entry>
   
   <entry>
     <title>JavaScript数据类型转换</title>
@@ -123,9 +150,9 @@
       <category term="前端" scheme="http://yoursite.com/categories/%E5%89%8D%E7%AB%AF/"/>
     
     
-      <category term="前端" scheme="http://yoursite.com/tags/%E5%89%8D%E7%AB%AF/"/>
-    
       <category term="JavaScript" scheme="http://yoursite.com/tags/JavaScript/"/>
+    
+      <category term="前端" scheme="http://yoursite.com/tags/%E5%89%8D%E7%AB%AF/"/>
     
   </entry>
   
