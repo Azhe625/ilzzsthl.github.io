@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-06-16T02:32:24.199Z</updated>
+  <updated>2020-07-24T10:35:27.121Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>移动端vw+rem布局</title>
+    <link href="http://yoursite.com/2020/06/29/yi-dong-duan-vw-rem-bu-ju/"/>
+    <id>http://yoursite.com/2020/06/29/yi-dong-duan-vw-rem-bu-ju/</id>
+    <published>2020-06-29T08:52:22.000Z</published>
+    <updated>2020-07-24T10:35:27.121Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;ul&gt;
+&lt;li&gt;vw：vw单位是以视口宽度而言的百分比单位，1vw相当于视口宽度的1%&lt;/li&gt;
+&lt;li&gt;rem：相对于根元素即html的fonts-size定义的单位。如html的font-size为 16px，则1rem =
+        
+      
+    
+    </summary>
+    
+    
+    
+      <category term="移动端" scheme="http://yoursite.com/tags/%E7%A7%BB%E5%8A%A8%E7%AB%AF/"/>
+    
+      <category term="css" scheme="http://yoursite.com/tags/css/"/>
+    
+  </entry>
   
   <entry>
     <title>闭包的理解</title>
@@ -76,7 +105,7 @@
     <link href="http://yoursite.com/2020/05/25/vue-dan-wen-jian-chai-fen-zhi-mixins/"/>
     <id>http://yoursite.com/2020/05/25/vue-dan-wen-jian-chai-fen-zhi-mixins/</id>
     <published>2020-05-25T07:49:46.000Z</published>
-    <updated>2020-06-15T07:05:20.313Z</updated>
+    <updated>2020-07-24T10:17:34.566Z</updated>
     
     <summary type="html">
     
@@ -150,9 +179,9 @@
       <category term="前端" scheme="http://yoursite.com/categories/%E5%89%8D%E7%AB%AF/"/>
     
     
-      <category term="JavaScript" scheme="http://yoursite.com/tags/JavaScript/"/>
-    
       <category term="前端" scheme="http://yoursite.com/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="JavaScript" scheme="http://yoursite.com/tags/JavaScript/"/>
     
   </entry>
   
@@ -188,7 +217,7 @@
     <link href="http://yoursite.com/2020/01/06/hexo-chang-yong-ming-ling/"/>
     <id>http://yoursite.com/2020/01/06/hexo-chang-yong-ming-ling/</id>
     <published>2020-01-06T11:39:57.000Z</published>
-    <updated>2020-06-05T05:49:18.911Z</updated>
+    <updated>2020-07-24T09:51:39.927Z</updated>
     
     <summary type="html">
     
