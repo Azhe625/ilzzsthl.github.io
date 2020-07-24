@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="vue单文件拆分之mixins, 谦谦君子，温润如玉">
+    <meta name="keywords" content="罗马数字转整数, 谦谦君子，温润如玉">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>vue单文件拆分之mixins | 谦谦君子，温润如玉</title>
+    <title>罗马数字转整数 | 谦谦君子，温润如玉</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -309,12 +309,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">vue单文件拆分之mixins</h1>
+                    <h1 class="description center-align post-title">罗马数字转整数</h1>
                 </div>
             </div>
         </div>
@@ -431,12 +431,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/vue/">
-                                <span class="chip bg-color">vue</span>
-                            </a>
-                        
-                            <a href="/tags/%E4%BB%A3%E7%A0%81%E4%BC%98%E5%8C%96/">
-                                <span class="chip bg-color">代码优化</span>
+                            <a href="/tags/%E7%AE%97%E6%B3%95/">
+                                <span class="chip bg-color">算法</span>
                             </a>
                         
                     </div>
@@ -447,8 +443,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/vue/" class="post-category">
-                                vue
+                            <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category">
+                                算法
                             </a>
                         
                     </div>
@@ -460,7 +456,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-05-25
+                    2020-07-24
                 </div>
                 
 
@@ -474,14 +470,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    240
+                    555
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    2 分
                 </div>
                 
 
@@ -496,20 +492,73 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>今天get到一个解决方案，关于单vue组件过大拆分的问题。<br>举个例子，有个test的文件，里面的代码量很大，之前是这样解决的：拆分成多个.vue文件，通过组件引入的方式，每个.vue文件都要写template、script。调用子组件的方式需要通过ref。<br>存在的问题：只想引用js，却需要按照通用组件的方式引入，并且每个都需要写template和一个div，带来性能损耗。<br>解决方案：使用vue.js mixins，将不同的逻辑放到不同的js文件里，方法直接通过this调用。</p>
-<h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><p>mixins.js </p>
-<pre class=" language-javascript"><code class="language-javascript">    expord <span class="token keyword">default</span> <span class="token punctuation">{</span>
-        <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span></code></pre>
-<p>在test里混合</p>
-<pre class=" language-javascript"><code class="language-javascript"><span class="token operator">&lt;</span>script<span class="token operator">></span>
-    <span class="token keyword">import</span> mixins <span class="token keyword">from</span> <span class="token string">'../minxins.js'</span>
-    <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
-        mixins<span class="token punctuation">:</span> <span class="token punctuation">[</span>mixins<span class="token punctuation">]</span>
+                <h3 id="力扣第13题"><a href="#力扣第13题" class="headerlink" title="力扣第13题"></a>力扣第13题</h3><p>罗马数字包含以下七种字符: <code>I</code>， <code>V</code>， <code>X</code>， <code>L</code>，<code>C</code>，<code>D</code> 和 <code>M</code>。</p>
+<pre class=" language-js"><code class="language-js">字符          数值
+I             <span class="token number">1</span>
+V             <span class="token number">5</span>
+X             <span class="token number">10</span>
+L             <span class="token number">50</span>
+C             <span class="token number">100</span>
+D             <span class="token number">500</span>
+M             <span class="token number">1000</span></code></pre>
+<p>例如， 罗马数字 2 写做 II ，即为两个并列的 1。12 写做 XII ，即为 X + II 。 27 写做  XXVII, 即为 XX + V + II 。</p>
+<p>通常情况下，罗马数字中小的数字在大的数字的右边。但也存在特例，例如 4 不写做 IIII，而是 IV。数字 1 在数字 5 的左边，所表示的数等于大数 5 减小数 1 得到的数值 4 。同样地，数字 9 表示为 IX。这个特殊的规则只适用于以下六种情况：</p>
+<ul>
+<li>I 可以放在 V (5) 和 X (10) 的左边，来表示 4 和 9。</li>
+<li>X 可以放在 L (50) 和 C (100) 的左边，来表示 40 和 90。 </li>
+<li>C 可以放在 D (500) 和 M (1000) 的左边，来表示 400 和 900。</li>
+<li>给定一个罗马数字，将其转换成整数。输入确保在 1 到 3999 的范围内。</li>
+</ul>
+<p><strong>示例 1:</strong></p>
+<pre class=" language-js"><code class="language-js">输入<span class="token punctuation">:</span> <span class="token string">"III"</span>
+输出<span class="token punctuation">:</span> <span class="token number">3</span></code></pre>
+<p><strong>示例 2:</strong></p>
+<pre class=" language-js"><code class="language-js">输入<span class="token punctuation">:</span> <span class="token string">"IV"</span>
+输出<span class="token punctuation">:</span> <span class="token number">4</span></code></pre>
+<p><strong>示例 3:</strong></p>
+<pre class=" language-js"><code class="language-js">输入<span class="token punctuation">:</span> <span class="token string">"IX"</span>
+输出<span class="token punctuation">:</span> <span class="token number">9</span></code></pre>
+<p><strong>示例 4:</strong></p>
+<pre class=" language-js"><code class="language-js">输入<span class="token punctuation">:</span> <span class="token string">"LVIII"</span>
+输出<span class="token punctuation">:</span> <span class="token number">58</span>
+解释<span class="token punctuation">:</span> L <span class="token operator">=</span> <span class="token number">50</span><span class="token punctuation">,</span> V<span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">,</span> III <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">.</span></code></pre>
+<p><strong>示例 5:</strong></p>
+<pre class=" language-js"><code class="language-js">输入<span class="token punctuation">:</span> <span class="token string">"MCMXCIV"</span>
+输出<span class="token punctuation">:</span> <span class="token number">1994</span>
+解释<span class="token punctuation">:</span> M <span class="token operator">=</span> <span class="token number">1000</span><span class="token punctuation">,</span> CM <span class="token operator">=</span> <span class="token number">900</span><span class="token punctuation">,</span> XC <span class="token operator">=</span> <span class="token number">90</span><span class="token punctuation">,</span> IV <span class="token operator">=</span> <span class="token number">4</span><span class="token punctuation">.</span></code></pre>
+<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><ol>
+<li>先考虑正常情况，创建一个map，此处用对象代替，通过循环累加值。</li>
+<li>再考虑特殊情况，创建另一个特殊情况map</li>
+<li>遍历到当前的罗马数字的时候，判断一下当前的罗马数字和前一位罗马数字相加，是否等于特殊map里的值，是的话就加上特殊map的值，再减去前一位的值。</li>
+</ol>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><pre class=" language-js"><code class="language-js"><span class="token keyword">var</span> romanToInt <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> map <span class="token operator">=</span> <span class="token punctuation">{</span>
+        <span class="token string">'I'</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+        <span class="token string">"V"</span><span class="token punctuation">:</span> <span class="token number">5</span><span class="token punctuation">,</span>
+        <span class="token string">"X"</span><span class="token punctuation">:</span> <span class="token number">10</span><span class="token punctuation">,</span>
+        <span class="token string">"L"</span><span class="token punctuation">:</span> <span class="token number">50</span><span class="token punctuation">,</span>
+        <span class="token string">"C"</span><span class="token punctuation">:</span> <span class="token number">100</span><span class="token punctuation">,</span>
+        <span class="token string">"D"</span><span class="token punctuation">:</span> <span class="token number">500</span><span class="token punctuation">,</span>
+        <span class="token string">"M"</span><span class="token punctuation">:</span> <span class="token number">1000</span>
     <span class="token punctuation">}</span>
-<span class="token operator">&lt;</span><span class="token operator">/</span>scrpit<span class="token operator">></span></code></pre>
+    <span class="token keyword">let</span> map2 <span class="token operator">=</span> <span class="token punctuation">{</span>
+        <span class="token string">'IV'</span><span class="token punctuation">:</span> <span class="token number">4</span><span class="token punctuation">,</span>
+        <span class="token string">'IX'</span><span class="token punctuation">:</span> <span class="token number">9</span><span class="token punctuation">,</span>
+        <span class="token string">'XL'</span><span class="token punctuation">:</span> <span class="token number">40</span><span class="token punctuation">,</span>
+        <span class="token string">'XC'</span><span class="token punctuation">:</span> <span class="token number">90</span><span class="token punctuation">,</span>
+        <span class="token string">'CD'</span><span class="token punctuation">:</span> <span class="token number">400</span><span class="token punctuation">,</span>
+        <span class="token string">'CM'</span><span class="token punctuation">:</span> <span class="token number">900</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">let</span> res <span class="token operator">=</span> <span class="token number">0</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">let</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>s<span class="token punctuation">.</span>length<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>map2<span class="token punctuation">[</span>s<span class="token punctuation">[</span>i<span class="token number">-1</span><span class="token punctuation">]</span><span class="token operator">+</span>s<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            res<span class="token operator">+</span><span class="token operator">=</span>map2<span class="token punctuation">[</span>s<span class="token punctuation">[</span>i<span class="token number">-1</span><span class="token punctuation">]</span><span class="token operator">+</span>s<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token operator">-</span>map<span class="token punctuation">[</span>s<span class="token punctuation">[</span>i<span class="token number">-1</span><span class="token punctuation">]</span><span class="token punctuation">]</span>
+        <span class="token punctuation">}</span><span class="token keyword">else</span> <span class="token punctuation">{</span>
+            res<span class="token operator">+</span><span class="token operator">=</span>map<span class="token punctuation">[</span>s<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> res
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -553,7 +602,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://yoursite.com/2020/05/25/vue-dan-wen-jian-chai-fen-zhi-mixins/">http://yoursite.com/2020/05/25/vue-dan-wen-jian-chai-fen-zhi-mixins/</a>
+                    <a href="http://yoursite.com/2020/07/24/luo-ma-shu-zi-zhuan-zheng-shu/">http://yoursite.com/2020/07/24/luo-ma-shu-zi-zhuan-zheng-shu/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -591,12 +640,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/vue/">
-                                    <span class="chip bg-color">vue</span>
-                                </a>
-                            
-                                <a href="/tags/%E4%BB%A3%E7%A0%81%E4%BC%98%E5%8C%96/">
-                                    <span class="chip bg-color">代码优化</span>
+                                <a href="/tags/%E7%AE%97%E6%B3%95/">
+                                    <span class="chip bg-color">算法</span>
                                 </a>
                             
                         </div>
@@ -764,49 +809,53 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2020/06/15/javascript-shu-ju-lei-xing-zhuan-huan/">
+                <a href="/2020/07/24/luo-ma-shu-zi-zhuan-zheng-shu/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="JavaScript数据类型转换">
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="罗马数字转整数">
                         
-                        <span class="card-title">JavaScript数据类型转换</span>
+                        <span class="card-title">罗马数字转整数</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            js是一门动态弱类型语言，使得在开发时提供了很多便利，但坑点大多也是来源于此，因此，搞懂了类型转换的细节就能避免多数开发时遇到的坑，本文将用最短的文字来解释清楚类型转换。
-1. 类型转换的区别主要是分为显式转换和隐式转换：  
-
-显式转换：
+                            力扣第13题罗马数字包含以下七种字符: I， V， X， L，C，D 和 M。
+字符          数值
+I             1
+V             5
+X             10
+L             50
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-06-15
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-07-24
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/JavaScript/" class="post-category">
-                                    JavaScript
+                            <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category">
+                                    算法
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/JavaScript/">
-                        <span class="chip bg-color">JavaScript</span>
+                    <a href="/tags/%E7%AE%97%E6%B3%95/">
+                        <span class="chip bg-color">算法</span>
                     </a>
                     
                 </div>
@@ -820,33 +869,38 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/01/16/markdown-te-shu-ji-qiao/">
+                <a href="/2020/07/24/hui-wen-shu/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="markdown特殊技巧">
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="回文数">
                         
-                        <span class="card-title">markdown特殊技巧</span>
+                        <span class="card-title">回文数</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            第一式 文字变色&lt;font face="黑体"&gt;黑体&lt;/font&gt;
-&lt;font color="c7254e"&gt;文字变色！&lt;/font&gt;
-&lt;table&gt;&lt;tr&gt;&lt;t
+                            力扣第9题判断一个整数是否是回文数。回文数是指正序（从左向右）和倒序（从右向左）读都是一样的整数
+示例 1:
+输入: 121
+输出: true
+示例 2:
+输入: -121
+输出: false
+解释: 从左向右读, 为 -121 。 从右向
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-01-16
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-07-24
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Markdown/" class="post-category">
-                                    Markdown
+                            <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category">
+                                    算法
                                 </a>
                             
                             
@@ -856,8 +910,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Markdown/">
-                        <span class="chip bg-color">Markdown</span>
+                    <a href="/tags/%E7%AE%97%E6%B3%95/">
+                        <span class="chip bg-color">算法</span>
                     </a>
                     
                 </div>
