@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="移动端vw+rem布局, 谦谦君子，温润如玉">
+    <meta name="keywords" content="有效的括号, 谦谦君子，温润如玉">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>移动端vw+rem布局 | 谦谦君子，温润如玉</title>
+    <title>有效的括号 | 谦谦君子，温润如玉</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -309,12 +309,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/9.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/16.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">移动端vw+rem布局</h1>
+                    <h1 class="description center-align post-title">有效的括号</h1>
                 </div>
             </div>
         </div>
@@ -431,18 +431,27 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E7%A7%BB%E5%8A%A8%E7%AB%AF/">
-                                <span class="chip bg-color">移动端</span>
+                            <a href="/tags/%E7%AE%97%E6%B3%95/">
+                                <span class="chip bg-color">算法</span>
                             </a>
                         
-                            <a href="/tags/css/">
-                                <span class="chip bg-color">css</span>
+                            <a href="/tags/%E6%A0%88/">
+                                <span class="chip bg-color">栈</span>
                             </a>
                         
                     </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category">
+                                算法
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -451,21 +460,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-06-29
+                    2020-07-27
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-07-24
+                    2020-07-27
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    189
+                    319
                 </div>
                 
 
@@ -487,10 +496,60 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <ul>
-<li>vw：vw单位是以视口宽度而言的百分比单位，1vw相当于视口宽度的1%</li>
-<li>rem：相对于根元素即html的fonts-size定义的单位。如html的font-size为 16px，则1rem = 16px<br>在移动端，vw配合rem的布局的思路为：在根结点即html设置font-size为vw单位，在文本字体、布局高宽、间距等设置rem单位。<br>这样做，视口大小改变，则html元素的font-size改变，设置为rem单位的元素也发生改变，因此就增强了响应式体验。</li>
-</ul>
+                <p>给定一个只包括 ‘(‘，’)’，’{‘，’}’，’[‘，’]’ 的字符串，判断字符串是否有效。</p>
+<p>有效字符串需满足：</p>
+<p>左括号必须用相同类型的右括号闭合。<br>左括号必须以正确的顺序闭合。<br>注意空字符串可被认为是有效字符串。</p>
+<p><strong>示例 1:</strong></p>
+<pre class=" language-js"><code class="language-js">输入<span class="token punctuation">:</span> <span class="token string">"()"</span>
+输出<span class="token punctuation">:</span> <span class="token boolean">true</span></code></pre>
+<p><strong>示例 2:</strong></p>
+<pre class=" language-js"><code class="language-js">输入<span class="token punctuation">:</span> <span class="token string">"()[]{}"</span>
+输出<span class="token punctuation">:</span> <span class="token boolean">true</span></code></pre>
+<p><strong>示例 3:</strong></p>
+<pre class=" language-js"><code class="language-js">输入<span class="token punctuation">:</span> <span class="token string">"(]"</span>
+输出<span class="token punctuation">:</span> <span class="token boolean">false</span></code></pre>
+<p><strong>示例 4:</strong></p>
+<pre class=" language-js"><code class="language-js">输入<span class="token punctuation">:</span> <span class="token string">"([)]"</span>
+输出<span class="token punctuation">:</span> <span class="token boolean">false</span></code></pre>
+<p><strong>示例 5:</strong></p>
+<pre class=" language-js"><code class="language-js">输入<span class="token punctuation">:</span> <span class="token string">"{[]}"</span>
+输出<span class="token punctuation">:</span> <span class="token boolean">true</span></code></pre>
+<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><ol>
+<li>栈的规律，先进后出。定义好map，存放左右括号。定义好栈、栈的顶部标记。</li>
+<li>字符串入栈时，如果是左括号则进栈，右括号则消除。</li>
+<li>符合要求的字符串在栈中一定是空的，因此可判断  </li>
+</ol>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><pre class=" language-js"><code class="language-js"><span class="token comment" spellcheck="true">/**
+ * @param {string} s
+ * @return {boolean}
+ */</span>
+<span class="token keyword">var</span> isValid <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> map <span class="token operator">=</span> <span class="token punctuation">{</span>
+        <span class="token string">'{'</span><span class="token punctuation">:</span><span class="token string">'}'</span><span class="token punctuation">,</span>
+        <span class="token string">'['</span><span class="token punctuation">:</span><span class="token string">']'</span><span class="token punctuation">,</span>
+        <span class="token string">'('</span><span class="token punctuation">:</span><span class="token string">')'</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">let</span> strack <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    <span class="token keyword">let</span> top <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>s<span class="token punctuation">.</span>length<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>map<span class="token punctuation">[</span>s<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">//左括号一律进去</span>
+            strack<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>s<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span>
+            top<span class="token operator">++</span>
+        <span class="token punctuation">}</span><span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>map<span class="token punctuation">[</span>strack<span class="token punctuation">[</span>top<span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">===</span> s<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">//栈顶元素等于新进来的元素则清除</span>
+            strack<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+            top<span class="token operator">--</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token boolean">false</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>strack<span class="token punctuation">.</span>length<span class="token operator">===</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token boolean">true</span>
+    <span class="token punctuation">}</span><span class="token keyword">else</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token boolean">false</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -534,7 +593,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://yoursite.com/2020/06/29/yi-dong-duan-vw-rem-bu-ju/">http://yoursite.com/2020/06/29/yi-dong-duan-vw-rem-bu-ju/</a>
+                    <a href="http://yoursite.com/2020/07/27/you-xiao-de-gua-hao/">http://yoursite.com/2020/07/27/you-xiao-de-gua-hao/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -572,12 +631,12 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E7%A7%BB%E5%8A%A8%E7%AB%AF/">
-                                    <span class="chip bg-color">移动端</span>
+                                <a href="/tags/%E7%AE%97%E6%B3%95/">
+                                    <span class="chip bg-color">算法</span>
                                 </a>
                             
-                                <a href="/tags/css/">
-                                    <span class="chip bg-color">css</span>
+                                <a href="/tags/%E6%A0%88/">
+                                    <span class="chip bg-color">栈</span>
                                 </a>
                             
                         </div>
@@ -745,35 +804,93 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2020/07/24/zui-chang-gong-gong-qian-zhui/">
+                <a href="/2020/07/27/you-xiao-de-gua-hao/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="最长公共前缀">
+                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="有效的括号">
                         
-                        <span class="card-title">最长公共前缀</span>
+                        <span class="card-title">有效的括号</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            力扣14题问题：编写一个函数来查找字符串数组中的最长公共前缀。
-如果不存在公共前缀，返回空字符串 ""。
+                            给定一个只包括 ‘(‘，’)’，’{‘，’}’，’[‘，’]’ 的字符串，判断字符串是否有效。
+有效字符串需满足：
+左括号必须用相同类型的右括号闭合。左括号必须以正确的顺序闭合。注意空字符串可被认为是有效字符串。
 示例 1:
-输入: ["flower","flow","flight"]
-输出: "fl"
-示例 2:
-输入: ["dog","rac
+输入: "()
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-07-24
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-07-27
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category">
+                                    算法
+                                </a>
+                            
+                            
                         </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E7%AE%97%E6%B3%95/">
+                        <span class="chip bg-color">算法</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%A0%88/">
+                        <span class="chip bg-color">栈</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2020/07/24/luo-ma-shu-zi-zhuan-zheng-shu/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="罗马数字转整数">
+                        
+                        <span class="card-title">罗马数字转整数</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            力扣第13题罗马数字包含以下七种字符: I， V， X， L，C，D 和 M。
+字符          数值
+I             1
+V             5
+X             10
+L             50
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-07-24
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -791,56 +908,6 @@
                     
                     <a href="/tags/%E7%AE%97%E6%B3%95/">
                         <span class="chip bg-color">算法</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2020/06/16/bi-bao-de-li-jie/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="闭包的理解">
-                        
-                        <span class="card-title">闭包的理解</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            闭包是什么？定义： 可以访问其他函数作用域内变量的函数叫做闭包(js高程)。举例： 比如说函数A内部有个函数B，函数B可以访问到A中的变量，那么函数B就是闭包。用途： 可以在外部间接访问函数内部的变量
-闭包会引起内存泄漏？错。内存泄漏是指用
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-06-16
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-user fa-fw"></i>
-                            神魔恋同学
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/JavaScript/">
-                        <span class="chip bg-color">JavaScript</span>
-                    </a>
-                    
-                    <a href="/tags/%E9%97%AD%E5%8C%85/">
-                        <span class="chip bg-color">闭包</span>
                     </a>
                     
                 </div>

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-07-24T10:50:39.422Z</updated>
+  <updated>2020-07-27T06:15:50.779Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>有效的括号</title>
+    <link href="http://yoursite.com/2020/07/27/you-xiao-de-gua-hao/"/>
+    <id>http://yoursite.com/2020/07/27/you-xiao-de-gua-hao/</id>
+    <published>2020-07-27T06:03:02.000Z</published>
+    <updated>2020-07-27T06:15:50.779Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;给定一个只包括 ‘(‘，’)’，’{‘，’}’，’[‘，’]’
+        
+      
+    
+    </summary>
+    
+    
+      <category term="算法" scheme="http://yoursite.com/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    
+      <category term="算法" scheme="http://yoursite.com/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="栈" scheme="http://yoursite.com/tags/%E6%A0%88/"/>
+    
+  </entry>
   
   <entry>
     <title>罗马数字转整数</title>
