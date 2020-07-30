@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="vue单文件拆分之mixins, 谦谦君子，温润如玉">
+    <meta name="keywords" content="验证回文字符串-删除一位, 谦谦君子，温润如玉">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>vue单文件拆分之mixins | 谦谦君子，温润如玉</title>
+    <title>验证回文字符串-删除一位 | 谦谦君子，温润如玉</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -309,12 +309,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">vue单文件拆分之mixins</h1>
+                    <h1 class="description center-align post-title">验证回文字符串-删除一位</h1>
                 </div>
             </div>
         </div>
@@ -431,12 +431,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/vue/">
-                                <span class="chip bg-color">vue</span>
+                            <a href="/tags/%E7%AE%97%E6%B3%95/">
+                                <span class="chip bg-color">算法</span>
                             </a>
                         
-                            <a href="/tags/%E4%BB%A3%E7%A0%81%E4%BC%98%E5%8C%96/">
-                                <span class="chip bg-color">代码优化</span>
+                            <a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/">
+                                <span class="chip bg-color">双指针</span>
                             </a>
                         
                     </div>
@@ -447,8 +447,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/vue/" class="post-category">
-                                vue
+                            <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category">
+                                算法
                             </a>
                         
                     </div>
@@ -460,21 +460,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-05-25
+                    2020-07-29
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-07-24
+                    2020-07-29
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    240
+                    297
                 </div>
                 
 
@@ -496,20 +496,46 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>今天get到一个解决方案，关于单vue组件过大拆分的问题。<br>举个例子，有个test的文件，里面的代码量很大，之前是这样解决的：拆分成多个.vue文件，通过组件引入的方式，每个.vue文件都要写template、script。调用子组件的方式需要通过ref。<br>存在的问题：只想引用js，却需要按照通用组件的方式引入，并且每个都需要写template和一个div，带来性能损耗。<br>解决方案：使用vue.js mixins，将不同的逻辑放到不同的js文件里，方法直接通过this调用。</p>
-<h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><p>mixins.js </p>
-<pre class=" language-javascript"><code class="language-javascript">    expord <span class="token keyword">default</span> <span class="token punctuation">{</span>
-        <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span></code></pre>
-<p>在test里混合</p>
-<pre class=" language-javascript"><code class="language-javascript"><span class="token operator">&lt;</span>script<span class="token operator">></span>
-    <span class="token keyword">import</span> mixins <span class="token keyword">from</span> <span class="token string">'../minxins.js'</span>
-    <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
-        mixins<span class="token punctuation">:</span> <span class="token punctuation">[</span>mixins<span class="token punctuation">]</span>
+                <p>给定一个非空字符串 <code>s</code>，<strong>最多</strong>删除一个字符。判断是否能成为回文字符串。</p>
+<p><strong>示例 1:</strong></p>
+<pre class=" language-js"><code class="language-js">输入<span class="token punctuation">:</span> <span class="token string">"aba"</span>
+输出<span class="token punctuation">:</span> True</code></pre>
+<p><strong>注意:</strong></p>
+<ol>
+<li>字符串只包含从 a-z 的小写字母。字符串的最大长度是50000。</li>
+</ol>
+<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><p>双指针的解法，两个指针分别是字符串的头和尾，先是循环对比，等到i和j不同时，判断左指针右移之后的是不是回文，是的话就返回true，再判断右指针左移之后是不是回文，是也返回true，否则默认返回false。</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><pre class=" language-js"><code class="language-js"><span class="token keyword">var</span> validPalindrome <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> str <span class="token operator">=</span> s
+    <span class="token keyword">let</span> len  <span class="token operator">=</span> s<span class="token punctuation">.</span>length
+    <span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> 
+    <span class="token keyword">let</span> j <span class="token operator">=</span> len<span class="token number">-1</span><span class="token punctuation">;</span>
+    <span class="token keyword">while</span><span class="token punctuation">(</span>i<span class="token operator">&lt;</span>j<span class="token operator">&amp;&amp;</span>str<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">===</span>str<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        i<span class="token operator">++</span><span class="token punctuation">;</span>
+        j<span class="token operator">--</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
-<span class="token operator">&lt;</span><span class="token operator">/</span>scrpit<span class="token operator">></span></code></pre>
+
+    <span class="token comment" spellcheck="true">//左指针前诺一位，判断是不是回文</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">isPalid</span><span class="token punctuation">(</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span>j<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token boolean">true</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">isPalid</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span>j<span class="token number">-1</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token boolean">true</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">//判断字符串的left-right是不是回文</span>
+    <span class="token keyword">function</span> <span class="token function">isPalid</span><span class="token punctuation">(</span>left<span class="token punctuation">,</span>right<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">while</span><span class="token punctuation">(</span>left<span class="token operator">&lt;</span>right<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>str<span class="token punctuation">[</span>left<span class="token punctuation">]</span><span class="token operator">!==</span>str<span class="token punctuation">[</span>right<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">return</span> <span class="token boolean">false</span>
+            <span class="token punctuation">}</span>
+            left<span class="token operator">++</span>
+            right<span class="token operator">--</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> <span class="token boolean">true</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> <span class="token boolean">false</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -553,7 +579,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://yoursite.com/2020/05/25/vue-dan-wen-jian-chai-fen-zhi-mixins/">http://yoursite.com/2020/05/25/vue-dan-wen-jian-chai-fen-zhi-mixins/</a>
+                    <a href="http://yoursite.com/2020/07/29/yan-zheng-hui-wen-zi-fu-chuan-shan-chu-yi-wei/">http://yoursite.com/2020/07/29/yan-zheng-hui-wen-zi-fu-chuan-shan-chu-yi-wei/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -591,12 +617,12 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/vue/">
-                                    <span class="chip bg-color">vue</span>
+                                <a href="/tags/%E7%AE%97%E6%B3%95/">
+                                    <span class="chip bg-color">算法</span>
                                 </a>
                             
-                                <a href="/tags/%E4%BB%A3%E7%A0%81%E4%BC%98%E5%8C%96/">
-                                    <span class="chip bg-color">代码优化</span>
+                                <a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/">
+                                    <span class="chip bg-color">双指针</span>
                                 </a>
                             
                         </div>
@@ -768,36 +794,39 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2020/06/15/javascript-shu-ju-lei-xing-zhuan-huan/">
+                <a href="/2020/07/29/mei-ri-sui-bi/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="JavaScript数据类型转换">
+                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="每日随笔">
                         
-                        <span class="card-title">JavaScript数据类型转换</span>
+                        <span class="card-title">每日随笔</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            js是一门动态弱类型语言，使得在开发时提供了很多便利，但坑点大多也是来源于此，因此，搞懂了类型转换的细节就能避免多数开发时遇到的坑，本文将用最短的文字来解释清楚类型转换。
-1. 类型转换的区别主要是分为显式转换和隐式转换：  
+                            2020.7.29
+学习了一道回文算法题，核心是双指针的解法。
 
-显式转换：
+开始学习设计模式。
+
+开始一个计划-每日10点到12点编码。编码时间～就要开始啦
+
+12点啦，希望今天是一个好的开始，早日能成为厉害的人～加油～～
+
+
+2020.7.301.
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-06-15
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-07-29
                         </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/JavaScript/" class="post-category">
-                                    JavaScript
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            神魔恋同学
                             
                         </span>
                     </div>
@@ -805,8 +834,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/JavaScript/">
-                        <span class="chip bg-color">JavaScript</span>
+                    <a href="/tags/%E8%AE%A1%E5%88%92/">
+                        <span class="chip bg-color">计划</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%80%BB%E7%BB%93/">
+                        <span class="chip bg-color">总结</span>
                     </a>
                     
                 </div>
@@ -820,33 +853,35 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/01/16/markdown-te-shu-ji-qiao/">
+                <a href="/2020/07/27/you-xiao-de-gua-hao/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="markdown特殊技巧">
+                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="有效的括号">
                         
-                        <span class="card-title">markdown特殊技巧</span>
+                        <span class="card-title">有效的括号</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            第一式 文字变色&lt;font face="黑体"&gt;黑体&lt;/font&gt;
-&lt;font color="c7254e"&gt;文字变色！&lt;/font&gt;
-&lt;table&gt;&lt;tr&gt;&lt;t
+                            给定一个只包括 ‘(‘，’)’，’{‘，’}’，’[‘，’]’ 的字符串，判断字符串是否有效。
+有效字符串需满足：
+左括号必须用相同类型的右括号闭合。左括号必须以正确的顺序闭合。注意空字符串可被认为是有效字符串。
+示例 1:
+输入: "()
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-01-16
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-07-27
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Markdown/" class="post-category">
-                                    Markdown
+                            <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category">
+                                    算法
                                 </a>
                             
                             
@@ -856,8 +891,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Markdown/">
-                        <span class="chip bg-color">Markdown</span>
+                    <a href="/tags/%E7%AE%97%E6%B3%95/">
+                        <span class="chip bg-color">算法</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%A0%88/">
+                        <span class="chip bg-color">栈</span>
                     </a>
                     
                 </div>
