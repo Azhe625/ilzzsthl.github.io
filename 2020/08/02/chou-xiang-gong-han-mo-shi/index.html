@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="闭包的理解, 谦谦君子，温润如玉">
+    <meta name="keywords" content="抽象工厂模式, 谦谦君子，温润如玉">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>闭包的理解 | 谦谦君子，温润如玉</title>
+    <title>抽象工厂模式 | 谦谦君子，温润如玉</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -309,12 +309,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/7.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">闭包的理解</h1>
+                    <h1 class="description center-align post-title">抽象工厂模式</h1>
                 </div>
             </div>
         </div>
@@ -431,18 +431,27 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/JavaScript/">
-                                <span class="chip bg-color">JavaScript</span>
+                            <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
+                                <span class="chip bg-color">设计模式</span>
                             </a>
                         
-                            <a href="/tags/%E9%97%AD%E5%8C%85/">
-                                <span class="chip bg-color">闭包</span>
+                            <a href="/tags/%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/">
+                                <span class="chip bg-color">抽象工厂模式</span>
                             </a>
                         
                     </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="post-category">
+                                设计模式
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -451,21 +460,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-06-16
+                    2020-08-02
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-06-16
+                    2020-08-02
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    244
+                    419
                 </div>
                 
 
@@ -487,8 +496,65 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="闭包是什么？"><a href="#闭包是什么？" class="headerlink" title="闭包是什么？"></a>闭包是什么？</h2><p>定义： 可以访问其他函数作用域内变量的函数叫做闭包(js高程)。<br>举例： 比如说函数A内部有个函数B，函数B可以访问到A中的变量，那么函数B就是闭包。<br>用途： 可以在外部<strong>间接访问</strong>函数内部的变量</p>
-<h2 id="闭包会引起内存泄漏？"><a href="#闭包会引起内存泄漏？" class="headerlink" title="闭包会引起内存泄漏？"></a>闭包会引起内存泄漏？</h2><p>错。内存泄漏是指用不到的变量，依然占据着内存空间，不能被再次利用起来。 而闭包里的变量是我们需要的变量，不能说是内存泄漏。那么，这个内存泄漏的说法是哪儿来的？答案是IE的一个bug，IE在我们使用完闭包后，回收不了闭包里引用的变量。</p>
+                <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>一个简单的工厂，例如苹果厂，香蕉厂，它们的作用是单一的，只生产一种水果，那么抽象工厂就是将他们之间抽象出来，直接是水果厂，当你想增加一个西瓜厂的时候，只需要extends 水果厂，就可以扩展了。  </p>
+<p>那么它的好处是什么？  </p>
+<ul>
+<li>高内聚，低耦合。业务分离，不会互相干扰</li>
+<li>可维护性和可扩展性大大增强</li>
+<li>不会修改引入 </li>
+</ul>
+<p>它能解决什么？</p>
+<ul>
+<li>复杂场景下，各个业务模块的解耦合，当抽象模式下某一环出现了问题，可以轻松修改这个问题，不会影响到其他代码，因此一个工程模块再复杂，只要合理的运用，合理的分配模块粒度，后期代码即使被修改了，也不会有重大的改动。</li>
+</ul>
+<h2 id="代码举例"><a href="#代码举例" class="headerlink" title="代码举例"></a>代码举例</h2><pre class=" language-js"><code class="language-js"><span class="token comment" spellcheck="true">//抽象手机工厂</span>
+<span class="token keyword">class</span> <span class="token class-name">MobilePhoneFactory</span> <span class="token punctuation">{</span>
+    <span class="token function">constructor</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name
+    <span class="token punctuation">}</span>
+    <span class="token function">createOS</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span><span class="token string">"抽象方法不能直接调用，需要重写！"</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true">//具体工厂</span>
+<span class="token keyword">class</span> <span class="token class-name">FakeFactory</span> <span class="token keyword">extends</span> <span class="token class-name">MobilePhoneFactory</span> <span class="token punctuation">{</span>
+    <span class="token function">constructor</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">super</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token function">createOS</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">===</span> <span class="token string">'android'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">AndroidOS</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">AppleOS</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true">//抽象工厂</span>
+<span class="token keyword">class</span> <span class="token class-name">OS</span> <span class="token punctuation">{</span>
+    <span class="token function">controlHardWare</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span><span class="token string">"抽象产品不允许直接调用，需要重写"</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true">//具体工厂</span>
+<span class="token keyword">class</span> <span class="token class-name">AndroidOS</span> <span class="token keyword">extends</span> <span class="token class-name">OS</span> <span class="token punctuation">{</span>
+    <span class="token function">controlHardWare</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"我会用安卓的方式创建手机"</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true">//具体工厂</span>
+<span class="token keyword">class</span> <span class="token class-name">AppleOS</span> <span class="token keyword">extends</span> <span class="token class-name">OS</span> <span class="token punctuation">{</span>
+    <span class="token function">controlHardWare</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"我会用苹果的方式创建手机"</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> myPhone  <span class="token operator">=</span>  <span class="token keyword">new</span> <span class="token class-name">FakeFactory</span><span class="token punctuation">(</span><span class="token string">"android"</span><span class="token punctuation">)</span>
+<span class="token keyword">const</span> myOS <span class="token operator">=</span> myPhone<span class="token punctuation">.</span><span class="token function">createOS</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+myOS<span class="token punctuation">.</span><span class="token function">controlHardWare</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -532,7 +598,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://yoursite.com/2020/06/16/bi-bao-de-li-jie/">http://yoursite.com/2020/06/16/bi-bao-de-li-jie/</a>
+                    <a href="http://yoursite.com/2020/08/02/chou-xiang-gong-han-mo-shi/">http://yoursite.com/2020/08/02/chou-xiang-gong-han-mo-shi/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -570,12 +636,12 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/JavaScript/">
-                                    <span class="chip bg-color">JavaScript</span>
+                                <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
+                                    <span class="chip bg-color">设计模式</span>
                                 </a>
                             
-                                <a href="/tags/%E9%97%AD%E5%8C%85/">
-                                    <span class="chip bg-color">闭包</span>
+                                <a href="/tags/%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/">
+                                    <span class="chip bg-color">抽象工厂模式</span>
                                 </a>
                             
                         </div>
@@ -747,26 +813,29 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2020/06/29/yi-dong-duan-vw-rem-bu-ju/">
+                <a href="/2020/08/03/dan-li-mo-shi-bi-bao-shi-xian-quan-ju-dan-kuang/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="移动端vw+rem布局">
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="单例模式-闭包实现全局弹框">
                         
-                        <span class="card-title">移动端vw+rem布局</span>
+                        <span class="card-title">单例模式-闭包实现全局弹框</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
-vw：vw单位是以视口宽度而言的百分比单位，1vw相当于视口宽度的1%
-rem：相对于根元素即html的fonts-size定义的单位。如html的font-size为 16px，则1rem = 16px在移动端，vw配合rem的布局的思
+                            什么是单例模式？定义：保证一个类仅有一个实例，并提供一个访问它的全局访问点，这样的模式就叫做单例模式。
+举例：
+class SingleDog {
+    show() {
+        console.log("这个是单例模式")
+  
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-06-29
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-08-03
                         </span>
                         <span class="publish-author">
                             
@@ -779,12 +848,16 @@ rem：相对于根元素即html的fonts-size定义的单位。如html的font-siz
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E7%A7%BB%E5%8A%A8%E7%AB%AF/">
-                        <span class="chip bg-color">移动端</span>
+                    <a href="/tags/%E9%97%AD%E5%8C%85/">
+                        <span class="chip bg-color">闭包</span>
                     </a>
                     
-                    <a href="/tags/css/">
-                        <span class="chip bg-color">css</span>
+                    <a href="/tags/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/">
+                        <span class="chip bg-color">单例模式</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%85%A8%E5%B1%80%E5%BC%B9%E6%A1%86/">
+                        <span class="chip bg-color">全局弹框</span>
                     </a>
                     
                 </div>
@@ -798,34 +871,34 @@ rem：相对于根元素即html的fonts-size定义的单位。如html的font-siz
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/06/15/javascript-shu-ju-lei-xing-zhuan-huan/">
+                <a href="/2020/07/30/shan-chu-shu-zu-zhong-de-chong-fu-xiang/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="JavaScript数据类型转换">
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="删除数组中的重复项">
                         
-                        <span class="card-title">JavaScript数据类型转换</span>
+                        <span class="card-title">删除数组中的重复项</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            js是一门动态弱类型语言，使得在开发时提供了很多便利，但坑点大多也是来源于此，因此，搞懂了类型转换的细节就能避免多数开发时遇到的坑，本文将用最短的文字来解释清楚类型转换。
-1. 类型转换的区别主要是分为显式转换和隐式转换：  
-
-显式转换：
+                            给定一个排序数组，你需要在 原地 删除重复出现的元素，使得每个元素只出现一次，返回移除后数组的新长度。
+不要使用额外的数组空间，你必须在 原地 修改输入数组 并在使用 O(1) 额外空间的条件下完成。
+示例 1:
+给定数组 nums = [
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-06-15
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-07-30
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/JavaScript/" class="post-category">
-                                    JavaScript
+                            <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category">
+                                    算法
                                 </a>
                             
                             
@@ -835,8 +908,12 @@ rem：相对于根元素即html的fonts-size定义的单位。如html的font-siz
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/JavaScript/">
-                        <span class="chip bg-color">JavaScript</span>
+                    <a href="/tags/%E7%AE%97%E6%B3%95/">
+                        <span class="chip bg-color">算法</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/">
+                        <span class="chip bg-color">双指针</span>
                     </a>
                     
                 </div>

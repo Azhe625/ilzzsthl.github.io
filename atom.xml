@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-07-30T09:33:00.142Z</updated>
+  <updated>2020-08-03T09:04:46.638Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,64 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>单例模式-闭包实现全局弹框</title>
+    <link href="http://yoursite.com/2020/08/03/dan-li-mo-shi-bi-bao-shi-xian-quan-ju-dan-kuang/"/>
+    <id>http://yoursite.com/2020/08/03/dan-li-mo-shi-bi-bao-shi-xian-quan-ju-dan-kuang/</id>
+    <published>2020-08-03T08:56:17.000Z</published>
+    <updated>2020-08-03T09:04:46.638Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3 id=&quot;什么是单例模式？&quot;&gt;&lt;a href=&quot;#什么是单例模式？&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+    
+      <category term="闭包" scheme="http://yoursite.com/tags/%E9%97%AD%E5%8C%85/"/>
+    
+      <category term="单例模式" scheme="http://yoursite.com/tags/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/"/>
+    
+      <category term="全局弹框" scheme="http://yoursite.com/tags/%E5%85%A8%E5%B1%80%E5%BC%B9%E6%A1%86/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>抽象工厂模式</title>
+    <link href="http://yoursite.com/2020/08/02/chou-xiang-gong-han-mo-shi/"/>
+    <id>http://yoursite.com/2020/08/02/chou-xiang-gong-han-mo-shi/</id>
+    <published>2020-08-02T15:39:18.000Z</published>
+    <updated>2020-08-02T15:53:26.041Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;介绍&quot;&gt;&lt;a href=&quot;#介绍&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="设计模式" scheme="http://yoursite.com/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+    
+      <category term="设计模式" scheme="http://yoursite.com/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+      <category term="抽象工厂模式" scheme="http://yoursite.com/tags/%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/"/>
+    
+  </entry>
   
   <entry>
     <title>删除数组中的重复项</title>
@@ -52,7 +110,7 @@
     <link href="http://yoursite.com/2020/07/29/mei-ri-sui-bi/"/>
     <id>http://yoursite.com/2020/07/29/mei-ri-sui-bi/</id>
     <published>2020-07-29T15:57:28.000Z</published>
-    <updated>2020-07-30T09:30:50.526Z</updated>
+    <updated>2020-08-02T15:59:51.455Z</updated>
     
     <summary type="html">
     
